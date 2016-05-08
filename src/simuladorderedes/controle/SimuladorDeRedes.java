@@ -35,6 +35,7 @@ public class SimuladorDeRedes {
         //</editor-fold>
         //</editor-fold>
 
+        System.out.println("Página Inicial");     
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
