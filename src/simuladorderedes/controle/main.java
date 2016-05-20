@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package simuladorderedes.visao;
+package simuladorderedes.controle;
 
 /**
  *
  * @author Filipe
  */
-public class ObjetoMovel {
+public class main {
     
 }
