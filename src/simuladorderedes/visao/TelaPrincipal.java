@@ -1,5 +1,8 @@
 package simuladorderedes.visao;
 
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Filipe
@@ -39,20 +42,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonHub = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         MenuPrincipal = new javax.swing.JMenuBar();
-        abaArquivo = new javax.swing.JMenu();
-        subMenuArquivo = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuArquivo = new javax.swing.JMenu();
+        jMenuNovo = new javax.swing.JMenuItem();
+        jMenuAbrir = new javax.swing.JMenuItem();
+        jMenuSalvar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        abaEditar = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuSair = new javax.swing.JMenuItem();
+        jMenuEditar = new javax.swing.JMenu();
+        jMenuDesfazer = new javax.swing.JMenuItem();
+        jMenuRefazer = new javax.swing.JMenuItem();
         abaPlay = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        abaopcoes = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuConectar = new javax.swing.JMenuItem();
+        jMenuEnviarMensagem = new javax.swing.JMenuItem();
+        jMenuOpcoes = new javax.swing.JMenu();
+        jMenuPreferencias = new javax.swing.JMenuItem();
+        jMenuAjuda = new javax.swing.JMenu();
+        jMenuSobre = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
         ConfigIpPopupMenu2.add(jMenu1);
@@ -185,79 +190,101 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonSwitch.getAccessibleContext().setAccessibleDescription("");
 
-        abaArquivo.setText("Arquivo");
+        jMenuArquivo.setText("Arquivo");
 
-        subMenuArquivo.setText("Novo");
-        subMenuArquivo.addActionListener(new java.awt.event.ActionListener() {
+        jMenuNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/new.png"))); // NOI18N
+        jMenuNovo.setText("Novo");
+        jMenuNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subMenuArquivoActionPerformed(evt);
+                jMenuNovoActionPerformed(evt);
             }
         });
-        abaArquivo.add(subMenuArquivo);
+        jMenuArquivo.add(jMenuNovo);
 
-        jMenuItem4.setText("Abrir");
-        abaArquivo.add(jMenuItem4);
-
-        jMenuItem2.setText("Salvar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/open.png"))); // NOI18N
+        jMenuAbrir.setText("Abrir");
+        jMenuAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuAbrirActionPerformed(evt);
             }
         });
-        abaArquivo.add(jMenuItem2);
-        abaArquivo.add(jSeparator1);
+        jMenuArquivo.add(jMenuAbrir);
 
-        jMenuItem6.setText("Sair");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jMenuSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/save.png"))); // NOI18N
+        jMenuSalvar.setText("Salvar");
+        jMenuSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMenuSalvarActionPerformed(evt);
             }
         });
-        abaArquivo.add(jMenuItem6);
+        jMenuArquivo.add(jMenuSalvar);
+        jMenuArquivo.add(jSeparator1);
 
-        MenuPrincipal.add(abaArquivo);
-
-        abaEditar.setText("Editar");
-
-        jMenuItem5.setText("Desfazer");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/exit.png"))); // NOI18N
+        jMenuSair.setText("Sair");
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuSairActionPerformed(evt);
             }
         });
-        abaEditar.add(jMenuItem5);
+        jMenuArquivo.add(jMenuSair);
 
-        jMenuItem7.setText("Refazer");
-        abaEditar.add(jMenuItem7);
+        MenuPrincipal.add(jMenuArquivo);
 
-        MenuPrincipal.add(abaEditar);
+        jMenuEditar.setText("Editar");
+
+        jMenuDesfazer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/undo.png"))); // NOI18N
+        jMenuDesfazer.setText("Desfazer");
+        jMenuDesfazer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDesfazerActionPerformed(evt);
+            }
+        });
+        jMenuEditar.add(jMenuDesfazer);
+
+        jMenuRefazer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/redo.png"))); // NOI18N
+        jMenuRefazer.setText("Refazer");
+        jMenuEditar.add(jMenuRefazer);
+
+        MenuPrincipal.add(jMenuEditar);
 
         abaPlay.setText("Executar");
 
-        jMenuItem1.setText("Conectar dispositivos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuConectar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/link.png"))); // NOI18N
+        jMenuConectar.setText("Conectar dispositivos");
+        jMenuConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuConectarActionPerformed(evt);
             }
         });
-        abaPlay.add(jMenuItem1);
+        abaPlay.add(jMenuConectar);
 
-        jMenuItem3.setText("Enviar mensagem");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuEnviarMensagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/email.png"))); // NOI18N
+        jMenuEnviarMensagem.setText("Enviar mensagem");
+        jMenuEnviarMensagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuEnviarMensagemActionPerformed(evt);
             }
         });
-        abaPlay.add(jMenuItem3);
+        abaPlay.add(jMenuEnviarMensagem);
 
         MenuPrincipal.add(abaPlay);
 
-        abaopcoes.setText("Opções");
+        jMenuOpcoes.setText("Opções");
 
-        jMenuItem8.setText("Preferências");
-        abaopcoes.add(jMenuItem8);
+        jMenuPreferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/config.png"))); // NOI18N
+        jMenuPreferencias.setText("Preferências");
+        jMenuOpcoes.add(jMenuPreferencias);
 
-        MenuPrincipal.add(abaopcoes);
+        MenuPrincipal.add(jMenuOpcoes);
+
+        jMenuAjuda.setText("Ajuda");
+
+        jMenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/info.png"))); // NOI18N
+        jMenuSobre.setText("Sobre");
+        jMenuAjuda.add(jMenuSobre);
+
+        MenuPrincipal.add(jMenuAjuda);
 
         setJMenuBar(MenuPrincipal);
 
@@ -284,9 +311,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuSalvarActionPerformed
 
     private void jButtonRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRoteadorActionPerformed
         // TODO add your handling code here:
@@ -309,26 +336,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonServidorActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConectarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuConectarActionPerformed
 
-    private void subMenuArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuArquivoActionPerformed
+    private void jMenuNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNovoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_subMenuArquivoActionPerformed
+    }//GEN-LAST:event_jMenuNovoActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuEnviarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEnviarMensagemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuEnviarMensagemActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
+    }//GEN-LAST:event_jMenuSairActionPerformed
+
+    private void jMenuDesfazerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDesfazerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_jMenuDesfazerActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jMenuAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAbrirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
+    }//GEN-LAST:event_jMenuAbrirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -336,10 +365,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame LogInternalFrame;
     private javax.swing.JMenuBar MenuPrincipal;
     private javax.swing.JTextArea TextArea1;
-    private javax.swing.JMenu abaArquivo;
-    private javax.swing.JMenu abaEditar;
     private javax.swing.JMenu abaPlay;
-    private javax.swing.JMenu abaopcoes;
     private javax.swing.JButton jButtonDesktop;
     private javax.swing.JButton jButtonHub;
     private javax.swing.JButton jButtonRoteador;
@@ -347,14 +373,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSwitch;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuAbrir;
+    private javax.swing.JMenu jMenuAjuda;
+    private javax.swing.JMenu jMenuArquivo;
+    private javax.swing.JMenuItem jMenuConectar;
+    private javax.swing.JMenuItem jMenuDesfazer;
+    private javax.swing.JMenu jMenuEditar;
+    private javax.swing.JMenuItem jMenuEnviarMensagem;
+    private javax.swing.JMenuItem jMenuNovo;
+    private javax.swing.JMenu jMenuOpcoes;
+    private javax.swing.JMenuItem jMenuPreferencias;
+    private javax.swing.JMenuItem jMenuRefazer;
+    private javax.swing.JMenuItem jMenuSair;
+    private javax.swing.JMenuItem jMenuSalvar;
+    private javax.swing.JMenuItem jMenuSobre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -362,6 +394,5 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JMenuItem subMenuArquivo;
     // End of variables declaration//GEN-END:variables
 }
