@@ -25,25 +25,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ConfigIpPopupMenu2 = new javax.swing.JPopupMenu();
         jMenu1 = new javax.swing.JMenu();
         jInternalFrame1 = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
         LogInternalFrame = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea1 = new javax.swing.JTextArea();
-        equipamentosInternalFrame = new javax.swing.JInternalFrame();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButtonDesktop = new javax.swing.JButton();
+        jButtonServidor = new javax.swing.JButton();
+        jButtonRoteador = new javax.swing.JButton();
+        jButtonSwitch = new javax.swing.JButton();
+        jButtonHub = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
         MenuPrincipal = new javax.swing.JMenuBar();
         abaArquivo = new javax.swing.JMenu();
         subMenuArquivo = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem6 = new javax.swing.JMenuItem();
         abaEditar = new javax.swing.JMenu();
-        abaopcoes = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         abaPlay = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        abaopcoes = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
         ConfigIpPopupMenu2.add(jMenu1);
@@ -61,12 +68,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Simulador de Rede");
+        setEnabled(false);
+        setPreferredSize(new java.awt.Dimension(1024, 640));
 
         LogInternalFrame.setBorder(null);
+        LogInternalFrame.setClosable(true);
+        LogInternalFrame.setTitle("Logs");
         LogInternalFrame.setVisible(true);
 
+        TextArea1.setBackground(new java.awt.Color(0, 0, 0));
         TextArea1.setColumns(20);
+        TextArea1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         TextArea1.setRows(5);
         TextArea1.setToolTipText("");
         jScrollPane1.setViewportView(TextArea1);
@@ -80,78 +105,86 @@ public class TelaPrincipal extends javax.swing.JFrame {
         LogInternalFrameLayout.setVerticalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogInternalFrameLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        equipamentosInternalFrame.setVisible(true);
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton6.setText("Switch");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDesktop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/desktop.png"))); // NOI18N
+        jButtonDesktop.setToolTipText("");
+        jButtonDesktop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonDesktopActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Roteador");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonServidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/servidor.png"))); // NOI18N
+        jButtonServidor.setMaximumSize(new java.awt.Dimension(120, 120));
+        jButtonServidor.setMinimumSize(new java.awt.Dimension(120, 120));
+        jButtonServidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonServidorActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Desktop");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRoteador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/roteador.png"))); // NOI18N
+        jButtonRoteador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButtonRoteadorActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Servidor");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSwitch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/switch.png"))); // NOI18N
+        jButtonSwitch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButtonSwitchActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Hub");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jButtonHub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/hub.png"))); // NOI18N
+        jButtonHub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jButtonHubActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout equipamentosInternalFrameLayout = new javax.swing.GroupLayout(equipamentosInternalFrame.getContentPane());
-        equipamentosInternalFrame.getContentPane().setLayout(equipamentosInternalFrameLayout);
-        equipamentosInternalFrameLayout.setHorizontalGroup(
-            equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(equipamentosInternalFrameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jButtonDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jButtonServidor, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addComponent(jButtonRoteador, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(jButtonSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addComponent(jButtonHub, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addGap(269, 269, 269))
+            .addComponent(jSeparator2)
         );
-        equipamentosInternalFrameLayout.setVerticalGroup(
-            equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(equipamentosInternalFrameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButtonDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jButtonServidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonRoteador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonHub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
         );
 
-        abaArquivo.setText("Arquivos");
+        jButtonDesktop.getAccessibleContext().setAccessibleDescription("");
+        jButtonSwitch.getAccessibleContext().setAccessibleDescription("");
+
+        abaArquivo.setText("Arquivo");
 
         subMenuArquivo.setText("Novo");
         subMenuArquivo.addActionListener(new java.awt.event.ActionListener() {
@@ -171,24 +204,59 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         abaArquivo.add(jMenuItem2);
+        abaArquivo.add(jSeparator1);
+
+        jMenuItem6.setText("Sair");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        abaArquivo.add(jMenuItem6);
 
         MenuPrincipal.add(abaArquivo);
 
         abaEditar.setText("Editar");
+
+        jMenuItem5.setText("Desfazer");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        abaEditar.add(jMenuItem5);
+
+        jMenuItem7.setText("Refazer");
+        abaEditar.add(jMenuItem7);
+
         MenuPrincipal.add(abaEditar);
 
-        abaopcoes.setText("Opções");
-        MenuPrincipal.add(abaopcoes);
+        abaPlay.setText("Executar");
 
-        abaPlay.setText("Play");
-
-        jMenuItem1.setText("Play");
+        jMenuItem1.setText("Conectar dispositivos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         abaPlay.add(jMenuItem1);
 
-        jMenuItem3.setText("Passo-a-Passo");
+        jMenuItem3.setText("Enviar mensagem");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         abaPlay.add(jMenuItem3);
 
         MenuPrincipal.add(abaPlay);
+
+        abaopcoes.setText("Opções");
+
+        jMenuItem8.setText("Preferências");
+        abaopcoes.add(jMenuItem8);
+
+        MenuPrincipal.add(abaopcoes);
 
         setJMenuBar(MenuPrincipal);
 
@@ -196,54 +264,68 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(LogInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(equipamentosInternalFrame)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LogInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(LogInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                .addComponent(equipamentosInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButtonRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRoteadorActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButtonRoteadorActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jButtonHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHubActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jButtonHubActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jButtonSwitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSwitchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_jButtonSwitchActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jButtonDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesktopActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+
+    }//GEN-LAST:event_jButtonDesktopActionPerformed
+
+    private void jButtonServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonServidorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonServidorActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void subMenuArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuArquivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_subMenuArquivoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
 
 
@@ -256,19 +338,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu abaEditar;
     private javax.swing.JMenu abaPlay;
     private javax.swing.JMenu abaopcoes;
-    private javax.swing.JInternalFrame equipamentosInternalFrame;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonDesktop;
+    private javax.swing.JButton jButtonHub;
+    private javax.swing.JButton jButtonRoteador;
+    private javax.swing.JButton jButtonServidor;
+    private javax.swing.JButton jButtonSwitch;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JMenuItem subMenuArquivo;
     // End of variables declaration//GEN-END:variables
 }
