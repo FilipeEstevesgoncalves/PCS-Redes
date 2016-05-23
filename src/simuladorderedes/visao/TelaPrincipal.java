@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Filipe
+ * @author Júlio Campos
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -34,6 +34,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         LogInternalFrame = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButtonDesktop = new javax.swing.JButton();
         jButtonServidor = new javax.swing.JButton();
@@ -89,7 +90,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulador de Rede");
         setEnabled(false);
-        setPreferredSize(new java.awt.Dimension(1024, 640));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LogInternalFrame.setBorder(null);
         LogInternalFrame.setClosable(true);
@@ -115,6 +116,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        getContentPane().add(LogInternalFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(768, 24, -1, -1));
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 130, 130));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -162,15 +168,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jButtonDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addGap(31, 31, 31)
-                .addComponent(jButtonServidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonServidor, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .addGap(35, 35, 35)
-                .addComponent(jButtonRoteador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonRoteador, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addGap(34, 34, 34)
-                .addComponent(jButtonSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addGap(42, 42, 42)
-                .addComponent(jButtonHub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonHub, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .addGap(269, 269, 269))
             .addComponent(jSeparator2)
         );
@@ -180,15 +186,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButtonDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                    .addComponent(jButtonServidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonRoteador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonHub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRoteador, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonHub, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
 
-        jButtonSwitch.getAccessibleContext().setAccessibleDescription("");
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 433, 1024, -1));
 
         jMenuArquivo.setText("Arquivo");
 
@@ -288,25 +294,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(MenuPrincipal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(768, Short.MAX_VALUE)
-                .addComponent(LogInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(LogInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -314,27 +301,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalvarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuSalvarActionPerformed
-
-    private void jButtonRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRoteadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonRoteadorActionPerformed
-
-    private void jButtonHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonHubActionPerformed
-
-    private void jButtonSwitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSwitchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSwitchActionPerformed
-
-    private void jButtonDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesktopActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButtonDesktopActionPerformed
-
-    private void jButtonServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonServidorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonServidorActionPerformed
 
     private void jMenuConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConectarActionPerformed
         // TODO add your handling code here:
@@ -359,6 +325,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuAbrirActionPerformed
 
+    private void jButtonDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesktopActionPerformed
+    }//GEN-LAST:event_jButtonDesktopActionPerformed
+
+    private void jButtonServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonServidorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonServidorActionPerformed
+
+    private void jButtonRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRoteadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRoteadorActionPerformed
+
+    private void jButtonSwitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSwitchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSwitchActionPerformed
+
+    private void jButtonHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHubActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHubActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu ConfigIpPopupMenu2;
@@ -372,6 +358,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonServidor;
     private javax.swing.JButton jButtonSwitch;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuAbrir;
     private javax.swing.JMenu jMenuAjuda;
