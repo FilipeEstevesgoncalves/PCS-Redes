@@ -16,6 +16,7 @@ public class ConfigServidor extends javax.swing.JFrame {
      */
     public ConfigServidor() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
     }
 
     /**
