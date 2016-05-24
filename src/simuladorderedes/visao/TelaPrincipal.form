@@ -170,9 +170,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="botaoRoteador" min="-2" pref="117" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="botaoDesktop" min="-2" pref="117" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="botaoServidor" min="-2" pref="117" max="-2" attributes="0"/>
@@ -189,7 +189,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="botaoRoteador" alignment="3" min="-2" pref="124" max="-2" attributes="0"/>
+                      <Component id="botaoRoteador" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
                       <Component id="botaoServidor" alignment="3" min="-2" pref="124" max="-2" attributes="0"/>
                       <Component id="botaoSwitch" alignment="3" min="-2" pref="124" max="-2" attributes="0"/>
                       <Component id="botaoHub" alignment="3" min="-2" pref="124" max="-2" attributes="0"/>

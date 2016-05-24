@@ -1,7 +1,6 @@
 package simuladorderedes.visao;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 /**
  *
  * @author Filipe
@@ -23,7 +22,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public TelaPrincipal() {
         
-        quantidadeRoteador= -1;
         intanciaEquipamentos();
         initComponents();
     }
@@ -34,26 +32,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
             roteador[i] = new JInternalFrame("Roteador",false ,false, false, false);
             roteador[i].setBounds(50 *(i+1), 50*(i+1), 100, 100);
             JButton botao = new JButton();
-            botao.setIcon(new javax.swing.ImageIcon("C:\\Workspace\\NetBeans\\SimuladorDeRedes\\src\\imagens\\roteador.png"));
+            botao.setIcon(new javax.swing.ImageIcon("src/imagens/roteador.png"));
             roteador[i].add(botao);
             
             desktop[i] = new JInternalFrame("Desktop",false ,false, false, false);
             desktop[i].setBounds(120 *(i+1), 20*(i+1), 100, 100);
             desktop[i].add(new JButton("Config"));
             JButton desktopBotao = new JButton();
-            desktopBotao.setIcon(new javax.swing.ImageIcon("C:\\Workspace\\NetBeans\\SimuladorDeRedes\\src\\imagens\\desktop.png"));
+            desktopBotao.setIcon(new javax.swing.ImageIcon("src/imagens/desktop.png"));
             desktop[i].add(desktopBotao);
             
             hub[i] = new JInternalFrame("Hub",false ,false, false, false);
             hub[i].setBounds(10 *(i+1), 110*(i+1), 100, 100);
             JButton hubBotao = new JButton();
-            hubBotao.setIcon(new javax.swing.ImageIcon("C:\\Workspace\\NetBeans\\SimuladorDeRedes\\src\\imagens\\hub.png"));
+            hubBotao.setIcon(new javax.swing.ImageIcon("src/imagens/hub.png"));
             hub[i].add(hubBotao);
             
             eswitch[i] = new JInternalFrame("Switch",false ,false, false, false);
             eswitch[i].setBounds(270 *(i+1), 70*(i+1), 100, 100);
             JButton switchBotao = new JButton();
-            switchBotao.setIcon(new javax.swing.ImageIcon("C:\\Workspace\\NetBeans\\SimuladorDeRedes\\src\\imagens\\switch.png"));
+            switchBotao.setIcon(new javax.swing.ImageIcon("src/imagens/switch.png"));
             eswitch[i].add(switchBotao);
             
             
@@ -61,7 +59,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             servidor[i].setBounds(180 *(i+1), 80*(i+1), 100, 100);
             servidor[i].add(new JButton("Config"));
             JButton servidorBotao = new JButton();
-            servidorBotao.setIcon(new javax.swing.ImageIcon("C:\\Workspace\\NetBeans\\SimuladorDeRedes\\src\\imagens\\servidor.png"));
+            servidorBotao.setIcon(new javax.swing.ImageIcon("src/imagens/servidor.png"));
             servidor[i].add(servidorBotao);
             
         }
@@ -167,9 +165,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         equipamentosInternalFrameLayout.setHorizontalGroup(
             equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(equipamentosInternalFrameLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addComponent(botaoRoteador, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
