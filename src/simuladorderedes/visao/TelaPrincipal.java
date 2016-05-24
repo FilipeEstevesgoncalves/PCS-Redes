@@ -1,4 +1,6 @@
 package simuladorderedes.visao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 /**
@@ -13,7 +15,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     JInternalFrame []eswitch = new JInternalFrame[10];
     JInternalFrame []servidor = new JInternalFrame[10];
     
-    
     int quantidadeDesktop;
     int quantidadeServidor;
     int quantidadeSwitch;
@@ -23,6 +24,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         
         intanciaEquipamentos();
+        
         initComponents();
     }
 
@@ -41,6 +43,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             JButton desktopBotao = new JButton();
             desktopBotao.setIcon(new javax.swing.ImageIcon("src/imagens/desktop.png"));
             desktop[i].add(desktopBotao);
+            
+            desktopBotao.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                        ConfigDesktop configDesktop = new ConfigDesktop();
+                        configDesktop.setVisible(true);
+                }
+            }); 
             
             hub[i] = new JInternalFrame("Hub",false ,false, false, false);
             hub[i].setBounds(10 *(i+1), 110*(i+1), 100, 100);
@@ -62,6 +73,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             servidorBotao.setIcon(new javax.swing.ImageIcon("src/imagens/servidor.png"));
             servidor[i].add(servidorBotao);
             
+            servidorBotao.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                        ConfigServidor configServidor = new ConfigServidor();
+                        configServidor.setVisible(true);
+                }
+            }); 
         }
     }
     
@@ -89,10 +108,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         abaEditar = new javax.swing.JMenu();
-        abaopcoes = new javax.swing.JMenu();
         abaPlay = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        abaPlay1 = new javax.swing.JMenu();
+        jMenuConectar = new javax.swing.JMenuItem();
+        jMenuEnviarMensagem = new javax.swing.JMenuItem();
+        jMenuOpcoes = new javax.swing.JMenu();
+        jMenuPreferencias = new javax.swing.JMenuItem();
+        jMenuArquivo = new javax.swing.JMenu();
+        jMenuNovo = new javax.swing.JMenuItem();
+        jMenuAbrir = new javax.swing.JMenuItem();
+        jMenuSalvar = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuSair = new javax.swing.JMenuItem();
+        jMenuAjuda = new javax.swing.JMenu();
+        jMenuSobre = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
         ConfigIpPopupMenu2.add(jMenu1);
@@ -181,12 +212,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(equipamentosInternalFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoRoteador, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoHub, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botaoServidor, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoHub, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -248,9 +280,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         abaEditar.setText("Editar");
         MenuPrincipal.add(abaEditar);
 
-        abaopcoes.setText("Opções");
-        MenuPrincipal.add(abaopcoes);
-
         abaPlay.setText("Play");
 
         jMenuItem1.setText("Play");
@@ -260,6 +289,77 @@ public class TelaPrincipal extends javax.swing.JFrame {
         abaPlay.add(jMenuItem3);
 
         MenuPrincipal.add(abaPlay);
+
+        abaPlay1.setText("Executar");
+
+        jMenuConectar.setText("Conectar dispositivos");
+        jMenuConectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConectarActionPerformed(evt);
+            }
+        });
+        abaPlay1.add(jMenuConectar);
+
+        jMenuEnviarMensagem.setText("Enviar mensagem");
+        jMenuEnviarMensagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEnviarMensagemActionPerformed(evt);
+            }
+        });
+        abaPlay1.add(jMenuEnviarMensagem);
+
+        MenuPrincipal.add(abaPlay1);
+
+        jMenuOpcoes.setText("Opções");
+
+        jMenuPreferencias.setText("Preferências");
+        jMenuOpcoes.add(jMenuPreferencias);
+
+        jMenuArquivo.setText("Arquivo");
+
+        jMenuNovo.setText("Novo");
+        jMenuNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuNovoActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(jMenuNovo);
+
+        jMenuAbrir.setText("Abrir");
+        jMenuAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAbrirActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(jMenuAbrir);
+
+        jMenuSalvar.setText("Salvar");
+        jMenuSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSalvarActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(jMenuSalvar);
+        jMenuArquivo.add(jSeparator1);
+
+        jMenuSair.setText("Sair");
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSairActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(jMenuSair);
+
+        jMenuOpcoes.add(jMenuArquivo);
+
+        MenuPrincipal.add(jMenuOpcoes);
+
+        jMenuAjuda.setText("Ajuda");
+
+        jMenuSobre.setText("Sobre");
+        jMenuAjuda.add(jMenuSobre);
+
+        MenuPrincipal.add(jMenuAjuda);
 
         setJMenuBar(MenuPrincipal);
 
@@ -291,7 +391,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void botaoDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDesktopActionPerformed
        quantidadeDesktop++;
        desktop[quantidadeDesktop].setVisible(true);
@@ -331,6 +432,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConectarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuConectarActionPerformed
+
+    private void jMenuEnviarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEnviarMensagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuEnviarMensagemActionPerformed
+
+    private void jMenuNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNovoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuNovoActionPerformed
+
+    private void jMenuAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAbrirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAbrirActionPerformed
+
+    private void jMenuSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuSalvarActionPerformed
+
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuSairActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu ConfigIpPopupMenu2;
     private javax.swing.JInternalFrame LogInternalFrame;
@@ -339,7 +464,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu abaArquivo;
     private javax.swing.JMenu abaEditar;
     private javax.swing.JMenu abaPlay;
-    private javax.swing.JMenu abaopcoes;
+    private javax.swing.JMenu abaPlay1;
     private javax.swing.JButton botaoDesktop;
     private javax.swing.JButton botaoHub;
     private javax.swing.JButton botaoRoteador;
@@ -350,11 +475,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane3;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuAbrir;
+    private javax.swing.JMenu jMenuAjuda;
+    private javax.swing.JMenu jMenuArquivo;
+    private javax.swing.JMenuItem jMenuConectar;
+    private javax.swing.JMenuItem jMenuEnviarMensagem;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuNovo;
+    private javax.swing.JMenu jMenuOpcoes;
+    private javax.swing.JMenuItem jMenuPreferencias;
+    private javax.swing.JMenuItem jMenuSair;
+    private javax.swing.JMenuItem jMenuSalvar;
+    private javax.swing.JMenuItem jMenuSobre;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem subMenuArquivo;
     // End of variables declaration//GEN-END:variables
 }
