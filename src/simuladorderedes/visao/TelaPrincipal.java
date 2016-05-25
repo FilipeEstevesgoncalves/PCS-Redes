@@ -11,80 +11,81 @@ import javax.swing.JInternalFrame;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    JInternalFrame[] roteador = new JInternalFrame[10];
-    JInternalFrame[] desktop = new JInternalFrame[10];
-    JInternalFrame[] hub = new JInternalFrame[10];
-    JInternalFrame[] eswitch = new JInternalFrame[10];
-    JInternalFrame[] servidor = new JInternalFrame[10];
-
+    JInternalFrame []roteador = new JInternalFrame[10];
+    JInternalFrame []desktop = new JInternalFrame[10];
+    JInternalFrame []hub = new JInternalFrame[10];
+    JInternalFrame []eswitch = new JInternalFrame[10];
+    JInternalFrame []servidor = new JInternalFrame[10];
+    
     int quantidadeDesktop;
     int quantidadeServidor;
     int quantidadeSwitch;
     int quantidadeHub;
     int quantidadeRoteador;
-
+    
     public TelaPrincipal() {
-
+        
         intanciaEquipamentos();
-
+        
         initComponents();
     }
 
     private void intanciaEquipamentos() {
-        for (int i = 0; i < roteador.length; i++) {
-
-            roteador[i] = new JInternalFrame("Roteador", false, false, false, false);
-            roteador[i].setBounds(50 * (i + 1), 50 * (i + 1), 140, 140);
+        for(int i = 0; i < roteador.length; i++){
+           
+            roteador[i] = new JInternalFrame("Roteador",false ,false, false, false);
+            roteador[i].setBounds(50 *(i+1), 50*(i+1), 100, 100);
             JButton botao = new JButton();
             botao.setIcon(new javax.swing.ImageIcon("src/imagens/roteador.png"));
             roteador[i].add(botao);
-
-            desktop[i] = new JInternalFrame("Desktop", false, false, false, false);
-            desktop[i].setBounds(120 * (i + 1), 20 * (i + 1), 140, 140);
+            
+            desktop[i] = new JInternalFrame("Desktop",false ,false, false, false);
+            desktop[i].setBounds(120 *(i+1), 20*(i+1), 100, 100);
             desktop[i].add(new JButton("Config"));
             JButton desktopBotao = new JButton();
             desktopBotao.setIcon(new javax.swing.ImageIcon("src/imagens/desktop.png"));
             desktop[i].add(desktopBotao);
-
+            
             desktopBotao.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    ConfigDesktop configDesktop = new ConfigDesktop();
-                    configDesktop.setVisible(true);
+                        ConfigDesktop configDesktop = new ConfigDesktop();
+                        configDesktop.setVisible(true);
                 }
-            });
-
-            hub[i] = new JInternalFrame("Hub", false, false, false, false);
-            hub[i].setBounds(10 * (i + 1), 110 * (i + 1), 140, 140);
+            }); 
+            
+            hub[i] = new JInternalFrame("Hub",false ,false, false, false);
+            hub[i].setBounds(10 *(i+1), 110*(i+1), 100, 100);
             JButton hubBotao = new JButton();
             hubBotao.setIcon(new javax.swing.ImageIcon("src/imagens/hub.png"));
             hub[i].add(hubBotao);
-
-            eswitch[i] = new JInternalFrame("Switch", false, false, false, false);
-            eswitch[i].setBounds(270 * (i + 1), 70 * (i + 1), 140, 140);
+            
+            eswitch[i] = new JInternalFrame("Switch",false ,false, false, false);
+            eswitch[i].setBounds(270 *(i+1), 70*(i+1), 100, 100);
             JButton switchBotao = new JButton();
             switchBotao.setIcon(new javax.swing.ImageIcon("src/imagens/switch.png"));
             eswitch[i].add(switchBotao);
-
-            servidor[i] = new JInternalFrame("Servidor", false, false, false, false);
-            servidor[i].setBounds(180 * (i + 1), 80 * (i + 1), 140, 140);
+            
+            
+            servidor[i] = new JInternalFrame("Servidor",false ,false, false, false);
+            servidor[i].setBounds(180 *(i+1), 80*(i+1), 100, 100);
             servidor[i].add(new JButton("Config"));
             JButton servidorBotao = new JButton();
             servidorBotao.setIcon(new javax.swing.ImageIcon("src/imagens/servidor.png"));
             servidor[i].add(servidorBotao);
-
+            
             servidorBotao.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    ConfigServidor configServidor = new ConfigServidor();
-                    configServidor.setVisible(true);
+                        ConfigServidor configServidor = new ConfigServidor();
+                        configServidor.setVisible(true);
                 }
-            });
+            }); 
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,6 +94,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jDesktopPane2 = new javax.swing.JDesktopPane();
+        jDesktopPane4 = new javax.swing.JDesktopPane();
         equipamentosInternalFrame = new javax.swing.JInternalFrame();
         botaoDesktop = new javax.swing.JButton();
         botaoRoteador = new javax.swing.JButton();
@@ -112,8 +114,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuSair = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
-        jMenuDesfazer = new javax.swing.JMenuItem();
-        jMenuRefazer = new javax.swing.JMenuItem();
         abaPlay = new javax.swing.JMenu();
         jMenuConectar = new javax.swing.JMenuItem();
         jMenuEnviarMensagem = new javax.swing.JMenuItem();
@@ -146,6 +146,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDesktopPane4Layout = new javax.swing.GroupLayout(jDesktopPane4);
+        jDesktopPane4.setLayout(jDesktopPane4Layout);
+        jDesktopPane4Layout.setHorizontalGroup(
+            jDesktopPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jDesktopPane4Layout.setVerticalGroup(
+            jDesktopPane4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
@@ -253,7 +264,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         LogInternalFrameLayout.setVerticalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGroup(LogInternalFrameLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDesktopPane3Layout = new javax.swing.GroupLayout(jDesktopPane3);
@@ -264,7 +277,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPane3Layout.setVerticalGroup(
             jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 416, Short.MAX_VALUE)
         );
 
         jMenuArquivo.setText("Arquivo");
@@ -309,20 +322,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenuPrincipal.add(jMenuArquivo);
 
         jMenuEditar.setText("Editar");
-
-        jMenuDesfazer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/undo.png"))); // NOI18N
-        jMenuDesfazer.setText("Desfazer");
-        jMenuDesfazer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuDesfazerActionPerformed(evt);
-            }
-        });
-        jMenuEditar.add(jMenuDesfazer);
-
-        jMenuRefazer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/redo.png"))); // NOI18N
-        jMenuRefazer.setText("Refazer");
-        jMenuEditar.add(jMenuRefazer);
-
         MenuPrincipal.add(jMenuEditar);
 
         abaPlay.setText("Executar");
@@ -370,14 +369,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jDesktopPane3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(equipamentosInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LogInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,8 +393,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-
+    
+  
     private void botaoDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDesktopActionPerformed
         quantidadeDesktop++;
         desktop[quantidadeDesktop].setVisible(true);
@@ -473,19 +472,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConectar;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
+    private javax.swing.JDesktopPane jDesktopPane4;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuAbrir;
     private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuItem jMenuConectar;
-    private javax.swing.JMenuItem jMenuDesfazer;
     private javax.swing.JMenu jMenuEditar;
     private javax.swing.JMenuItem jMenuEnviarMensagem;
     private javax.swing.JMenuItem jMenuNovo;
     private javax.swing.JMenu jMenuOpcoes;
     private javax.swing.JMenuItem jMenuPreferencias;
-    private javax.swing.JMenuItem jMenuRefazer;
     private javax.swing.JMenuItem jMenuSair;
     private javax.swing.JMenuItem jMenuSalvar;
     private javax.swing.JMenuItem jMenuSobre;
