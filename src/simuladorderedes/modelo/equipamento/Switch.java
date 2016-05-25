@@ -1,24 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package simuladorderedes.modelo.equipamento;
 
-import simuladorderedes.modelo.IIp;
+import simuladorderedes.modelo.TabelaMac;
 
 /**
- *
+ * Transparente(hosts e roteadores não sabem da sua presença)
+ * Plug and Play
  * @author Filipe
  */
-public class Switch extends Equipamento implements IIp{
+public class Switch extends Equipamento {
 
-    private int ip;
-    private int [] tabelaComutacao;
+    Integer [] porta;
+    private TabelaMac tabelaComutacao;
     
-    @Override
-    public void receberIp() {
-        // TODO 
+
+    public Switch( String nome) {
+        super(EnumTipoEquipamento.SWITCH, nome);
+        this.tabelaComutacao = new TabelaMac();
     }
-    
+
+    @Override
+    public void broadcast() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
