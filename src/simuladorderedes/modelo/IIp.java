@@ -1,9 +1,10 @@
 package simuladorderedes.modelo;
 
-import simuladorderedes.modelo.equipamento.Roteador;
-
+/**
+ *
+ * @author Filipe
+ */
 public interface IIp {
-
-    public void adicionarIp(Ip ip);
-    public void Dhcp(Roteador roterador);
+    
+    public void receberIp();
 }

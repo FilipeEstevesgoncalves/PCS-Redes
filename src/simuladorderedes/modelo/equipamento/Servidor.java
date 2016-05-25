@@ -1,30 +1,22 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package simuladorderedes.modelo.equipamento;
 
 import simuladorderedes.modelo.IIp;
-import simuladorderedes.modelo.Ip;
 
-public class Servidor extends Equipamento implements IIp {
+/**
+ *
+ * @author Filipe
+ */
+public class Servidor extends Equipamento implements IIp{
 
-    private Ip ip;
-
-    public Servidor(String nome, int ip) {
-        super(EnumTipoEquipamento.SERVIDOR, nome);
-        this.ip = new Ip();
-    }
-
-        @Override
-    public void adicionarIp(Ip ip){
-        this.ip = ip;    
-    }
-
+    private int ip;
     @Override
-    public void broadcast() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void receberIp() {
+      // TODO
     }
-
-    @Override
-    public void Dhcp(Roteador roterador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
 }
