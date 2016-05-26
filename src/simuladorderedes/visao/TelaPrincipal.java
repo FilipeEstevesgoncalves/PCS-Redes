@@ -404,12 +404,6 @@ public class TelaPrincipal extends JFrame {
         quantidadeDesktop++;
         desktop[quantidadeDesktop].setVisible(true);
         jDesktopPane.add(desktop[quantidadeDesktop]);
-        
-        JPanel painel = new JPanel();
-        painel.setBounds(30, 30, 30, 30);
-        jDesktopPane.add(painel);
-        
-        
     }//GEN-LAST:event_botaoDesktopActionPerformed
 
     private void botaoRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRoteadorActionPerformed

@@ -5,8 +5,10 @@ package simuladorderedes.visao;
  */
 public class ConfigServidor extends javax.swing.JFrame {
 
+    
     public ConfigServidor() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")

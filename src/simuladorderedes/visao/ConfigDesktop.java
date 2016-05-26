@@ -16,7 +16,7 @@ public class ConfigDesktop extends javax.swing.JFrame {
      */
     public ConfigDesktop() {
         initComponents();
-        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
