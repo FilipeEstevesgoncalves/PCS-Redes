@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/labccet/Documents/NetBeansProjects/pcs/PCS-Redes/src/simuladorderedes/visao/TelaPrincipal.java</file>
-            <file>file:/C:/Users/labccet/Documents/NetBeansProjects/pcs/PCS-Redes/build/built-jar.properties</file>
+            <file>file:/C:/Workspace/NetBeans/PCS-Redes/src/simuladorderedes/visao/TelaPrincipal.java</file>
+            <file>file:/C:/Workspace/NetBeans/PCS-Redes/src/simuladorderedes/visao/RoteadorVisao.java</file>
+            <file>file:/C:/Workspace/NetBeans/PCS-Redes/src/simuladorderedes/visao/ConfigServidor.java</file>
+            <file>file:/C:/Workspace/NetBeans/PCS-Redes/src/simuladorderedes/controle/SimuladorControle.java</file>
         </group>
     </open-files>
 </project-private>

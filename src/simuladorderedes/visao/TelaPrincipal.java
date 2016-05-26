@@ -1,21 +1,26 @@
 package simuladorderedes.visao;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
  * @author Filipe
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class TelaPrincipal extends JFrame {
 
     JInternalFrame []roteador = new JInternalFrame[10];
     JInternalFrame []desktop = new JInternalFrame[10];
     JInternalFrame []hub = new JInternalFrame[10];
     JInternalFrame []eswitch = new JInternalFrame[10];
     JInternalFrame []servidor = new JInternalFrame[10];
+    
+    
     
     int quantidadeDesktop;
     int quantidadeServidor;
@@ -36,14 +41,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             roteador[i] = new JInternalFrame("Roteador",false ,false, false, false);
             roteador[i].setBounds(50 *(i+1), 50*(i+1), 100, 100);
             JButton botao = new JButton();
-            botao.setIcon(new javax.swing.ImageIcon("src/imagens/roteador.png"));
+            botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
             roteador[i].add(botao);
             
             desktop[i] = new JInternalFrame("Desktop",false ,false, false, false);
             desktop[i].setBounds(120 *(i+1), 20*(i+1), 100, 100);
             desktop[i].add(new JButton("Config"));
             JButton desktopBotao = new JButton();
-            desktopBotao.setIcon(new javax.swing.ImageIcon("src/imagens/desktop.png"));
+            desktopBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getAminhoDesktop()));
             desktop[i].add(desktopBotao);
             
             desktopBotao.addActionListener(new ActionListener() {
@@ -58,13 +63,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             hub[i] = new JInternalFrame("Hub",false ,false, false, false);
             hub[i].setBounds(10 *(i+1), 110*(i+1), 100, 100);
             JButton hubBotao = new JButton();
-            hubBotao.setIcon(new javax.swing.ImageIcon("src/imagens/hub.png"));
+            hubBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoHub()));
             hub[i].add(hubBotao);
             
             eswitch[i] = new JInternalFrame("Switch",false ,false, false, false);
             eswitch[i].setBounds(270 *(i+1), 70*(i+1), 100, 100);
             JButton switchBotao = new JButton();
-            switchBotao.setIcon(new javax.swing.ImageIcon("src/imagens/switch.png"));
+            switchBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getAminhoSwitch()));
             eswitch[i].add(switchBotao);
             
             
@@ -72,7 +77,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             servidor[i].setBounds(180 *(i+1), 80*(i+1), 100, 100);
             servidor[i].add(new JButton("Config"));
             JButton servidorBotao = new JButton();
-            servidorBotao.setIcon(new javax.swing.ImageIcon("src/imagens/servidor.png"));
+            servidorBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoServidor()));
             servidor[i].add(servidorBotao);
             
             servidorBotao.addActionListener(new ActionListener() {
@@ -105,7 +110,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         LogInternalFrame = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea1 = new javax.swing.JTextArea();
-        jDesktopPane3 = new javax.swing.JDesktopPane();
+        jDesktopPane = new javax.swing.JDesktopPane();
         MenuPrincipal = new javax.swing.JMenuBar();
         jMenuArquivo = new javax.swing.JMenu();
         jMenuNovo = new javax.swing.JMenuItem();
@@ -269,14 +274,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDesktopPane3Layout = new javax.swing.GroupLayout(jDesktopPane3);
-        jDesktopPane3.setLayout(jDesktopPane3Layout);
-        jDesktopPane3Layout.setHorizontalGroup(
-            jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDesktopPaneLayout = new javax.swing.GroupLayout(jDesktopPane);
+        jDesktopPane.setLayout(jDesktopPaneLayout);
+        jDesktopPaneLayout.setHorizontalGroup(
+            jDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jDesktopPane3Layout.setVerticalGroup(
-            jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDesktopPaneLayout.setVerticalGroup(
+            jDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 416, Short.MAX_VALUE)
         );
 
@@ -371,7 +376,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jDesktopPane3)
+                    .addComponent(jDesktopPane)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(equipamentosInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -382,7 +387,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jDesktopPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LogInternalFrame)
@@ -398,32 +403,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void botaoDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDesktopActionPerformed
         quantidadeDesktop++;
         desktop[quantidadeDesktop].setVisible(true);
-        jDesktopPane3.add(desktop[quantidadeDesktop]);
+        jDesktopPane.add(desktop[quantidadeDesktop]);
+        
+        JPanel painel = new JPanel();
+        painel.setBounds(30, 30, 30, 30);
+        jDesktopPane.add(painel);
+        
+        
     }//GEN-LAST:event_botaoDesktopActionPerformed
 
     private void botaoRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRoteadorActionPerformed
         quantidadeRoteador++;
         roteador[quantidadeRoteador].setVisible(true);
-        jDesktopPane3.add(roteador[quantidadeRoteador]);
+        jDesktopPane.add(roteador[quantidadeRoteador]);
 
     }//GEN-LAST:event_botaoRoteadorActionPerformed
 
     private void botaoSwitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSwitchActionPerformed
         quantidadeSwitch++;
         eswitch[quantidadeSwitch].setVisible(true);
-        jDesktopPane3.add(eswitch[quantidadeSwitch]);
+        jDesktopPane.add(eswitch[quantidadeSwitch]);
     }//GEN-LAST:event_botaoSwitchActionPerformed
 
     private void botaoHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHubActionPerformed
         quantidadeHub++;
         hub[quantidadeHub].setVisible(true);
-        jDesktopPane3.add(hub[quantidadeHub]);
+        jDesktopPane.add(hub[quantidadeHub]);
     }//GEN-LAST:event_botaoHubActionPerformed
 
     private void botaoServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoServidorActionPerformed
         quantidadeServidor++;
         servidor[quantidadeServidor].setVisible(true);
-        jDesktopPane3.add(servidor[quantidadeServidor]);
+        jDesktopPane.add(servidor[quantidadeServidor]);
     }//GEN-LAST:event_botaoServidorActionPerformed
 
     private void jMenuNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNovoActionPerformed
@@ -470,8 +481,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoSwitch;
     private javax.swing.JInternalFrame equipamentosInternalFrame;
     private javax.swing.JButton jButtonConectar;
+    private javax.swing.JDesktopPane jDesktopPane;
     private javax.swing.JDesktopPane jDesktopPane2;
-    private javax.swing.JDesktopPane jDesktopPane3;
     private javax.swing.JDesktopPane jDesktopPane4;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
