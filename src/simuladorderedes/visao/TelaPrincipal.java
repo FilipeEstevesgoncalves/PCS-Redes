@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
 import javax.swing.*;
 import java.util.ArrayList;
 /**
@@ -402,7 +401,7 @@ public class TelaPrincipal extends JFrame {
     private void botaoRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRoteadorActionPerformed
         
         JInternalFrame roteadorInternalFrame = new JInternalFrame("Roteador",false ,false, false, false);
-        roteadorInternalFrame.setBounds(150 , 150, 100, 100);
+        roteadorInternalFrame.setBounds(200 , 200, 100, 100);
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
         roteadorInternalFrame.add(botao);

@@ -9,14 +9,13 @@ package simuladorderedes.visao;
  *
  * @author Filipe
  */
-public class ConfigDesktop extends javax.swing.JFrame {
+public class ConfigRoteador extends javax.swing.JFrame {
 
     /**
-     * Creates new form Config
+     * Creates new form ConfigRoteador
      */
-    public ConfigDesktop() {
+    public ConfigRoteador() {
         initComponents();
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -28,13 +27,10 @@ public class ConfigDesktop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jButtonSalvar = new javax.swing.JButton();
+        jRadioButtonDhcp = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        jRadioButtonEstatico = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -43,28 +39,22 @@ public class ConfigDesktop extends javax.swing.JFrame {
         jTextFieldGateway = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextFieldServidorDns = new javax.swing.JTextField();
-        jButtonSalvar = new javax.swing.JButton();
-        jRadioButtonDhcp = new javax.swing.JRadioButton();
-        jRadioButtonEstatico = new javax.swing.JRadioButton();
-
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
-
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
-
-        jMenu1.setText("jMenu1");
-
-        jRadioButtonMenuItem2.setSelected(true);
-        jRadioButtonMenuItem2.setText("jRadioButtonMenuItem2");
-
-        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Configurar desktop");
+
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonDhcp.setText("DHCP");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/desktop.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/roteador.png"))); // NOI18N
+
+        jRadioButtonEstatico.setText("Estático");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -80,17 +70,6 @@ public class ConfigDesktop extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Servidor DNS");
-
-        jButtonSalvar.setText("Salvar");
-        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarActionPerformed(evt);
-            }
-        });
-
-        jRadioButtonDhcp.setText("DHCP");
-
-        jRadioButtonEstatico.setText("Estático");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,7 +108,7 @@ public class ConfigDesktop extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(376, 376, 376)
                                 .addComponent(jButtonSalvar)))
-                        .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(jRadioButtonDhcp)
@@ -173,29 +152,57 @@ public class ConfigDesktop extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
 
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ConfigRoteador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ConfigRoteador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ConfigRoteador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ConfigRoteador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ConfigRoteador().setVisible(true);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JRadioButton jRadioButtonDhcp;
     private javax.swing.JRadioButton jRadioButtonEstatico;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JTextField jTextFieldGateway;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldServidorDns;
