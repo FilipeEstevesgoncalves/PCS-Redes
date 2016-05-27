@@ -7,18 +7,24 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.*;
-
+import java.util.ArrayList;
 /**
  *
  * @author Filipe
  */
 public class TelaPrincipal extends JFrame {
 
-    JInternalFrame []roteador = new JInternalFrame[10];
     JInternalFrame []desktop = new JInternalFrame[10];
     JInternalFrame []hub = new JInternalFrame[10];
     JInternalFrame []eswitch = new JInternalFrame[10];
     JInternalFrame []servidor = new JInternalFrame[10];
+    
+    ArrayList<JInternalFrame> roteadores;
+    ArrayList<JInternalFrame> desktops;
+    ArrayList<JInternalFrame> hubs;
+    ArrayList<JInternalFrame> switchs;
+    ArrayList<JInternalFrame> servidores;
+    
     
     
     
@@ -36,59 +42,27 @@ public class TelaPrincipal extends JFrame {
     }
 
     private void intanciaEquipamentos() {
-        for(int i = 0; i < roteador.length; i++){
-           
-            roteador[i] = new JInternalFrame("Roteador",false ,false, false, false);
-            roteador[i].setBounds(50 *(i+1), 50*(i+1), 100, 100);
-            JButton botao = new JButton();
-            botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
-            roteador[i].add(botao);
-            
-            desktop[i] = new JInternalFrame("Desktop",false ,false, false, false);
-            desktop[i].setBounds(120 *(i+1), 20*(i+1), 100, 100);
-            desktop[i].add(new JButton("Config"));
-            JButton desktopBotao = new JButton();
-            desktopBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getAminhoDesktop()));
-            desktop[i].add(desktopBotao);
-            
-            desktopBotao.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
+        
+        roteadores = new ArrayList<>();
+        hubs = new ArrayList<>();
+        servidores = new ArrayList<>();
+        desktops = new ArrayList<>();
+        switchs = new ArrayList<>();
+        
+//            
+//            hub[i] = new JInternalFrame("Hub",false ,false, false, false);
+//            hub[i].setBounds(10 *(i+1), 110*(i+1), 100, 100);
+//            JButton hubBotao = new JButton();
+//            hubBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoHub()));
+//            hub[i].add(hubBotao);
+//            
+//            eswitch[i] = new JInternalFrame("Switch",false ,false, false, false);
+//            eswitch[i].setBounds(270 *(i+1), 70*(i+1), 100, 100);
+//            JButton switchBotao = new JButton();
+//            switchBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoSwitch()));
+//            eswitch[i].add(switchBotao);
 
-                        ConfigDesktop configDesktop = new ConfigDesktop();
-                        configDesktop.setVisible(true);
-                }
-            }); 
-            
-            hub[i] = new JInternalFrame("Hub",false ,false, false, false);
-            hub[i].setBounds(10 *(i+1), 110*(i+1), 100, 100);
-            JButton hubBotao = new JButton();
-            hubBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoHub()));
-            hub[i].add(hubBotao);
-            
-            eswitch[i] = new JInternalFrame("Switch",false ,false, false, false);
-            eswitch[i].setBounds(270 *(i+1), 70*(i+1), 100, 100);
-            JButton switchBotao = new JButton();
-            switchBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getAminhoSwitch()));
-            eswitch[i].add(switchBotao);
-            
-            
-            servidor[i] = new JInternalFrame("Servidor",false ,false, false, false);
-            servidor[i].setBounds(180 *(i+1), 80*(i+1), 100, 100);
-            servidor[i].add(new JButton("Config"));
-            JButton servidorBotao = new JButton();
-            servidorBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoServidor()));
-            servidor[i].add(servidorBotao);
-            
-            servidorBotao.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                        ConfigServidor configServidor = new ConfigServidor();
-                        configServidor.setVisible(true);
-                }
-            }); 
-        }
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -282,7 +256,7 @@ public class TelaPrincipal extends JFrame {
         );
         jDesktopPaneLayout.setVerticalGroup(
             jDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 416, Short.MAX_VALUE)
+            .addGap(0, 444, Short.MAX_VALUE)
         );
 
         jMenuArquivo.setText("Arquivo");
@@ -401,34 +375,95 @@ public class TelaPrincipal extends JFrame {
     
   
     private void botaoDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDesktopActionPerformed
-        quantidadeDesktop++;
-        desktop[quantidadeDesktop].setVisible(true);
-        jDesktopPane.add(desktop[quantidadeDesktop]);
+        JInternalFrame desktopInternalFrame = new JInternalFrame("Desktop",false ,false, false, false);
+        desktopInternalFrame.setBounds(50 , 50, 100, 100);
+        JButton botao = new JButton();
+        botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoDesktop()));
+        desktopInternalFrame.add(botao);
+        
+        botao.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                        ConfigDesktop configDesktop = new ConfigDesktop();
+                        configDesktop.setVisible(true);
+                }
+            });
+       
+        desktopInternalFrame.setVisible(true);
+        desktops.add(desktopInternalFrame);
+        int i = desktops.indexOf(desktopInternalFrame);
+        jDesktopPane.add(desktops.get(i));
+
+        
+        
     }//GEN-LAST:event_botaoDesktopActionPerformed
 
     private void botaoRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRoteadorActionPerformed
-        quantidadeRoteador++;
-        roteador[quantidadeRoteador].setVisible(true);
-        jDesktopPane.add(roteador[quantidadeRoteador]);
-
+        
+        JInternalFrame roteadorInternalFrame = new JInternalFrame("Roteador",false ,false, false, false);
+        roteadorInternalFrame.setBounds(150 , 150, 100, 100);
+        JButton botao = new JButton();
+        botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
+        roteadorInternalFrame.add(botao);
+        
+        //TODO ainda falta colocar uma configuração de roteador
+        
+        
+        roteadorInternalFrame.setVisible(true);
+        roteadores.add(roteadorInternalFrame);
+        int i = roteadores.indexOf(roteadorInternalFrame);
+        jDesktopPane.add(roteadores.get(i));
     }//GEN-LAST:event_botaoRoteadorActionPerformed
 
     private void botaoSwitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSwitchActionPerformed
-        quantidadeSwitch++;
-        eswitch[quantidadeSwitch].setVisible(true);
-        jDesktopPane.add(eswitch[quantidadeSwitch]);
+        JInternalFrame switchInternalFrame = new JInternalFrame("Switch",false ,false, false, false);
+        switchInternalFrame.setBounds(150 , 150, 100, 100);
+        JButton botao = new JButton();
+        botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoSwitch()));
+        switchInternalFrame.add(botao);
+        
+        switchInternalFrame.setVisible(true);
+        switchs.add(switchInternalFrame);
+        int i = switchs.indexOf(switchInternalFrame);
+        jDesktopPane.add(switchs.get(i));
     }//GEN-LAST:event_botaoSwitchActionPerformed
 
     private void botaoHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHubActionPerformed
-        quantidadeHub++;
-        hub[quantidadeHub].setVisible(true);
-        jDesktopPane.add(hub[quantidadeHub]);
+        JInternalFrame hubInternalFrame = new JInternalFrame("Hub",false ,false, false, false);
+        hubInternalFrame.setBounds(350 , 350, 100, 100);
+        JButton botao = new JButton();
+        botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoHub()));
+        hubInternalFrame.add(botao);
+        
+        hubInternalFrame.setVisible(true);
+        hubs.add(hubInternalFrame);
+        int i = hubs.indexOf(hubInternalFrame);
+        jDesktopPane.add(hubs.get(i));
     }//GEN-LAST:event_botaoHubActionPerformed
 
     private void botaoServidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoServidorActionPerformed
-        quantidadeServidor++;
-        servidor[quantidadeServidor].setVisible(true);
-        jDesktopPane.add(servidor[quantidadeServidor]);
+        JInternalFrame servidorInternalFrame = new JInternalFrame("Servidor",false ,false, false, false);
+        servidorInternalFrame.setBounds(250 , 250, 100, 100);
+        JButton botao = new JButton();
+        botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoServidor()));
+        servidorInternalFrame.add(botao);
+        
+        botao.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                        ConfigServidor configServidor = new ConfigServidor();
+                        configServidor.setVisible(true);
+                }
+            });
+       
+        servidorInternalFrame.setVisible(true);
+        servidores.add(servidorInternalFrame);
+        int i = servidores.indexOf(servidorInternalFrame);
+        jDesktopPane.add(servidores.get(i));
+
+        
     }//GEN-LAST:event_botaoServidorActionPerformed
 
     private void jMenuNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNovoActionPerformed
