@@ -6,7 +6,7 @@
 package simuladorderedes.modelo.equipamento;
 
 /**
- *
+ * Limita os tipos de equipamento da rede
  * @author Filipe
  */
 public enum EnumTipoEquipamento {

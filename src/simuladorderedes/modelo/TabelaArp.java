@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package simuladorderedes.modelo.equipamento;
+package simuladorderedes.modelo;
+
+import java.util.HashMap;
 
 /**
- *
+ * Tabela de relação Endereço Mac com IP
  * @author Filipe
  */
-class HashTable<T0, T1> {
+public class TabelaArp {
     
+    private HashMap<EnderecoMac, Ip> arp;
 }

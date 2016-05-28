@@ -4,11 +4,14 @@ import simuladorderedes.modelo.*;
 
 public class Roteador extends Equipamento implements IIp{
 
-    private Ip[] ips;
-    private int[] portas;
+    private Ip ipPublico;
+    private Ip[] interfaces;
+    private int marcaraDeRede;
+    private TabelaArp tabelaArp;
 
     public Roteador(String nome) {
         super(EnumTipoEquipamento.ROTEADOR, nome);
+        
     }
 
     public void nat() {
@@ -25,7 +28,7 @@ public class Roteador extends Equipamento implements IIp{
     }
 
     @Override
-    public void adicionarIp(Ip ip){
+    public void adicionarEquipamento(Ip ip){
         //TODO    
     }
 
@@ -33,5 +36,16 @@ public class Roteador extends Equipamento implements IIp{
     public void Dhcp(Roteador roterador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void setIpPublico(Ip ipPublico) {
+        this.ipPublico = ipPublico;
+    }
+
+    public Ip getIpPublico() {
+        return ipPublico;
+    }
+    
+    
+    
 
 }

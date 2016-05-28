@@ -11,7 +11,6 @@ class CamadaRede {
     EnumProtocoRede protocolo;
     public CamadaRede(EnumProtocoRede rede) {
         protocolo = rede;
-       
     }
     
     

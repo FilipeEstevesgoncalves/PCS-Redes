@@ -1,5 +1,7 @@
 package simuladorderedes.modelo.equipamento;
 
+
+
 import simuladorderedes.modelo.TabelaMac;
 
 /**
@@ -11,6 +13,7 @@ public class Switch extends Equipamento {
 
     Integer [] porta;
     private TabelaMac tabelaComutacao;
+ 
     
 
     public Switch( String nome) {

@@ -8,7 +8,7 @@ package simuladorderedes.modelo;
 import java.util.HashMap;
 
 /**
- *
+ *Tabela que relaciona  Endereço Mac a porta
  * @author Filipe
  */
 public class TabelaMac {

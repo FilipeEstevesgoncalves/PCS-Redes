@@ -6,13 +6,19 @@ import simuladorderedes.modelo.*;
 
 public class Desktop extends Equipamento implements IIp {
 
+    /**
+     * Ip da máquina
+     */
     private Ip ip;
+    /**
+     * Conjunto de pacotes da máquina
+     */
     private Set<Pacote> pacotes = new HashSet<>();
+    private TabelaArp tabelaArp;
 
     public Desktop(String nome, Ip ip) {
         super(EnumTipoEquipamento.DESKTOP, nome);
         this.ip = ip;
-
     }
 
     public Desktop(String nome) {
@@ -40,7 +46,7 @@ public class Desktop extends Equipamento implements IIp {
     }
 
     @Override
-    public void adicionarIp(Ip ip) {
+    public void adicionarEquipamento(Ip ip) {
         this.ip = ip;
     }
 
@@ -51,5 +57,6 @@ public class Desktop extends Equipamento implements IIp {
     public Set<Pacote> getPacotes() {
         return pacotes;
     }
+    
 
 }

@@ -2,18 +2,25 @@ package simuladorderedes.modelo.equipamento;
 
 import simuladorderedes.modelo.IIp;
 import simuladorderedes.modelo.Ip;
+import simuladorderedes.modelo.TabelaArp;
 
 public class Servidor extends Equipamento implements IIp {
 
     private Ip ip;
+    private TabelaArp tabelaArp;
 
-    public Servidor(String nome, int ip) {
+    /**
+     * O servidor tem um ip obrigatóriamente
+     * @param nome
+     * @param ip 
+     */
+    public Servidor(String nome, Ip ip) {
         super(EnumTipoEquipamento.SERVIDOR, nome);
         this.ip = new Ip();
     }
 
-        @Override
-    public void adicionarIp(Ip ip){
+    @Override
+    public void adicionarEquipamento(Ip ip){
         this.ip = ip;    
     }
 

@@ -1,7 +1,10 @@
 package simuladorderedes.modelo.equipamento;
 
 import simuladorderedes.modelo.EnderecoMac;
-
+/**
+ * Classe abstrata
+ * @author Filipe
+ */
 public abstract class Equipamento {
 
     private EnumTipoEquipamento tipo;
@@ -9,6 +12,7 @@ public abstract class Equipamento {
     private final EnderecoMac mac;
     private int portaEthernet;
     private boolean ligado;
+    
 
     public Equipamento(EnumTipoEquipamento tipo, String nome) {
         this.mac = new EnderecoMac();

@@ -13,11 +13,6 @@ import java.util.ArrayList;
  */
 public class TelaPrincipal extends JFrame {
 
-    JInternalFrame []desktop = new JInternalFrame[10];
-    JInternalFrame []hub = new JInternalFrame[10];
-    JInternalFrame []eswitch = new JInternalFrame[10];
-    JInternalFrame []servidor = new JInternalFrame[10];
-    
     ArrayList<JInternalFrame> roteadores;
     ArrayList<JInternalFrame> desktops;
     ArrayList<JInternalFrame> hubs;
@@ -47,21 +42,6 @@ public class TelaPrincipal extends JFrame {
         servidores = new ArrayList<>();
         desktops = new ArrayList<>();
         switchs = new ArrayList<>();
-        
-//            
-//            hub[i] = new JInternalFrame("Hub",false ,false, false, false);
-//            hub[i].setBounds(10 *(i+1), 110*(i+1), 100, 100);
-//            JButton hubBotao = new JButton();
-//            hubBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoHub()));
-//            hub[i].add(hubBotao);
-//            
-//            eswitch[i] = new JInternalFrame("Switch",false ,false, false, false);
-//            eswitch[i].setBounds(270 *(i+1), 70*(i+1), 100, 100);
-//            JButton switchBotao = new JButton();
-//            switchBotao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoSwitch()));
-//            eswitch[i].add(switchBotao);
-
-        
     }
     
     @SuppressWarnings("unchecked")
