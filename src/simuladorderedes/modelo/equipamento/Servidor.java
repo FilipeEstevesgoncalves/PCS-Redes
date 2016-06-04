@@ -30,8 +30,19 @@ public class Servidor extends Equipamento implements IIp {
     }
 
     @Override
-    public void Dhcp(Roteador roterador) {
+    public void Dhcp() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Ip getIp() {
+        return ip;
+    }
+
+    @Override
+    public void plugaEm(Equipamento equipamento) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
 }

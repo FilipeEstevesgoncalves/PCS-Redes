@@ -6,12 +6,36 @@
 package simuladorderedes.modelo;
 
 import java.util.HashMap;
+import java.util.*;
+
 
 /**
- * Tabela de relação Endereço Mac com IP
+ * Tabela de relação IP com Endereço Mac
  * @author Filipe
  */
 public class TabelaArp {
     
-    private HashMap<EnderecoMac, Ip> arp;
+    private HashMap< Ip, EnderecoMac> arp;
+
+    public TabelaArp() {
+        arp = new HashMap<>();
+    }
+
+    
+    public void insere(Ip ip, EnderecoMac endereco){
+        arp.put(ip, endereco);
+    }
+    public EnderecoMac VerificaExistencia(Ip ip){
+        return arp.get(ip);
+    }
+    public ArrayList<EnderecoMac> broadcast(){
+        return (ArrayList<EnderecoMac>) arp.values();
+    }
+    public void Arp(){
+        //Requisita quem tem o ip x    Adress resolution protocol
+    }
+
+    
+    
+    
 }

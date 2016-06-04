@@ -1,6 +1,6 @@
 package simuladorderedes.modelo;
 
-import simuladorderedes.modelo.equipamento.Roteador;
+import simuladorderedes.modelo.equipamento.Equipamento;
 
 /**
  * Diferencia os equipamentos que tem ip dos que não tem
@@ -10,5 +10,6 @@ import simuladorderedes.modelo.equipamento.Roteador;
 public interface IIp {
 
     public void adicionarEquipamento(Ip ip);
-    public void Dhcp(Roteador roterador);
+    public void Dhcp(); 
+    
 }

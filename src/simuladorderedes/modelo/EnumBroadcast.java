@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package imagens;
+package simuladorderedes.modelo;
 
 /**
  *
  * @author Filipe
  */
-public class sa {
-    
+public enum EnumBroadcast {
+    BROADCAST;
 }

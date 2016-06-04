@@ -1,5 +1,6 @@
 package simuladorderedes.modelo;
 
+
 /**
  *
  * @author Filipe
@@ -7,19 +8,21 @@ package simuladorderedes.modelo;
 public class EnderecoMac {
 
     private StringBuilder mac;
-
     /**
      * Construtor que faz uma string com 4 valores hexadecimais
      */
     public EnderecoMac() {
         this.mac = new StringBuilder();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             this.mac.append(Long.toHexString(randInt(0, 255)));
-            this.mac.append(":");
+            this.mac.append("-");
         }
         mac.deleteCharAt(mac.length()- 1);
     }
-
+    
+    public EnderecoMac(EnumBroadcast tipo ) {
+            this.mac = new StringBuilder("ff-ff-ff-ff");
+    }
     /**
      * 
      * Gera numero inteiro randomico
