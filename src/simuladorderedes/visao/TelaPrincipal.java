@@ -1,6 +1,5 @@
 package simuladorderedes.visao;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -9,7 +8,9 @@ import javax.swing.*;
 import java.util.ArrayList;
 import simuladorderedes.controle.EquipamentosControle;
 import static simuladorderedes.controle.EquipamentosControle.criarDesktop;
-import simuladorderedes.modelo.equipamento.Desktop;
+import static simuladorderedes.controle.EquipamentosControle.criarRoteador;
+import simuladorderedes.modelo.equipamento.DesktopModelo;
+import simuladorderedes.modelo.equipamento.RoteadorModelo;
 
 /**
  *
@@ -22,32 +23,29 @@ public class TelaPrincipal extends JFrame {
     ArrayList<JInternalFrame> hubs;
     ArrayList<JInternalFrame> switchs;
     ArrayList<JInternalFrame> servidores;
-    
-    
-    
-    
+
     int quantidadeDesktop;
     int quantidadeServidor;
     int quantidadeSwitch;
     int quantidadeHub;
     int quantidadeRoteador;
-    
+
     public TelaPrincipal() {
-        
+
         intanciaEquipamentos();
-        
+
         initComponents();
     }
 
     private void intanciaEquipamentos() {
-        
+
         roteadores = new ArrayList<>();
         hubs = new ArrayList<>();
         servidores = new ArrayList<>();
         desktops = new ArrayList<>();
         switchs = new ArrayList<>();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -343,46 +341,51 @@ public class TelaPrincipal extends JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-  
+
+
     private void botaoDesktopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDesktopActionPerformed
-        Desktop desktop = criarDesktop();
-        
-        JInternalFrame desktopInternalFrame = new JInternalFrame(desktop.getNome(),false ,false, false, false);
-        desktopInternalFrame.setBounds(50 , 50, 100, 100);
+        DesktopModelo desktop = criarDesktop();
+
+        JInternalFrame desktopInternalFrame = new JInternalFrame(desktop.getNome(), false, false, false, false);
+        desktopInternalFrame.setBounds(50, 50, 100, 100);
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoDesktop()));
         desktopInternalFrame.add(botao);
-        
-        botao.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
 
-                        ConfigDesktop configDesktop = new ConfigDesktop(desktop);
-                        configDesktop.setVisible(true);
-                }
-            });
-       
+        botao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ConfigDesktop configDesktop = new ConfigDesktop(desktop);
+                configDesktop.setVisible(true);
+            }
+        });
+
         desktopInternalFrame.setVisible(true);
         desktops.add(desktopInternalFrame);
         int i = desktops.indexOf(desktopInternalFrame);
         jDesktopPane.add(desktops.get(i));
 
-        
-        
+
     }//GEN-LAST:event_botaoDesktopActionPerformed
 
     private void botaoRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRoteadorActionPerformed
-        
-        JInternalFrame roteadorInternalFrame = new JInternalFrame("Roteador",false ,false, false, false);
-        roteadorInternalFrame.setBounds(200 , 200, 100, 100);
+
+        RoteadorModelo roteador = criarRoteador();
+        JInternalFrame roteadorInternalFrame = new JInternalFrame("Roteador", false, false, false, false);
+        roteadorInternalFrame.setBounds(200, 200, 100, 100);
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
         roteadorInternalFrame.add(botao);
-        
-        //TODO ainda falta colocar uma configuração de roteador
-        
-        
+
+        botao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ConfigRoteador configRoteador = new ConfigRoteador(roteador);
+                configRoteador.setVisible(true);
+            }
+        });
         roteadorInternalFrame.setVisible(true);
         roteadores.add(roteadorInternalFrame);
         int i = roteadores.indexOf(roteadorInternalFrame);
@@ -390,12 +393,12 @@ public class TelaPrincipal extends JFrame {
     }//GEN-LAST:event_botaoRoteadorActionPerformed
 
     private void botaoSwitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSwitchActionPerformed
-        JInternalFrame switchInternalFrame = new JInternalFrame("Switch",false ,false, false, false);
-        switchInternalFrame.setBounds(150 , 150, 100, 100);
+        JInternalFrame switchInternalFrame = new JInternalFrame("Switch", false, false, false, false);
+        switchInternalFrame.setBounds(150, 150, 100, 100);
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoSwitch()));
         switchInternalFrame.add(botao);
-        
+
         switchInternalFrame.setVisible(true);
         switchs.add(switchInternalFrame);
         int i = switchs.indexOf(switchInternalFrame);
@@ -403,12 +406,12 @@ public class TelaPrincipal extends JFrame {
     }//GEN-LAST:event_botaoSwitchActionPerformed
 
     private void botaoHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHubActionPerformed
-        JInternalFrame hubInternalFrame = new JInternalFrame("Hub",false ,false, false, false);
-        hubInternalFrame.setBounds(350 , 350, 100, 100);
+        JInternalFrame hubInternalFrame = new JInternalFrame("Hub", false, false, false, false);
+        hubInternalFrame.setBounds(350, 350, 100, 100);
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoHub()));
         hubInternalFrame.add(botao);
-        
+
         hubInternalFrame.setVisible(true);
         hubs.add(hubInternalFrame);
         int i = hubs.indexOf(hubInternalFrame);

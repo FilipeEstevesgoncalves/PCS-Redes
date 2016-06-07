@@ -8,30 +8,30 @@ public  class  CaminhoImagens {
 
     
     
-    private static final String caminhoHub = "src/imagens/hub.png";
-    private static final String caminhoRoteador = "src/imagens/roteador.png";
-    private static final String caminhoServidor = "src/imagens/servidor.png";
-    private static final String caminhoDesktop = "src/imagens/desktop.png";
-    private static final String caminhoSwitch = "src/imagens/switch.png";
+    private static final String CAMINHOHUB = "src/imagens/hub.png";
+    private static final String CAMINHO_ROTEADOR = "src/imagens/roteador.png";
+    private static final String CAMINHO_SERVIDOR = "src/imagens/servidor.png";
+    private static final String CAMINHO_DESKTOP = "src/imagens/desktop.png";
+    private static final String CAMINHO_SWITCH = "src/imagens/switch.png";
 
     public static String getCaminhoHub() {
-        return caminhoHub;
+        return CAMINHOHUB;
     }
 
     public static String getCaminhoRoteador() {
-        return caminhoRoteador;
+        return CAMINHO_ROTEADOR;
     }
 
     public static String getCaminhoServidor() {
-        return caminhoServidor;
+        return CAMINHO_SERVIDOR;
     }
 
     public static String getCaminhoDesktop() {
-        return caminhoDesktop;
+        return CAMINHO_DESKTOP;
     }
 
     public static String getCaminhoSwitch() {
-        return caminhoSwitch;
+        return CAMINHO_SWITCH;
     }
  
     

@@ -1,10 +1,10 @@
 package simuladorderedes.controle;
 
 import simuladorderedes.modelo.*;
-import simuladorderedes.modelo.equipamento.Desktop;
-import simuladorderedes.modelo.equipamento.Hub;
-import simuladorderedes.modelo.equipamento.Roteador;
-import simuladorderedes.modelo.equipamento.Switch;
+import simuladorderedes.modelo.equipamento.DesktopModelo;
+import simuladorderedes.modelo.equipamento.HubModelo;
+import simuladorderedes.modelo.equipamento.RoteadorModelo;
+import simuladorderedes.modelo.equipamento.SwitchModelo;
 
 public class EquipamentosControle {
     
@@ -14,47 +14,47 @@ public class EquipamentosControle {
     private static int numeroSwithcs = 0;
     
     
-    public static Desktop criarDesktop(){
+    public static DesktopModelo criarDesktop(){
         StringBuilder sb = new StringBuilder("Desktop "); 
         numeroDesktops++;
         sb.append(numeroDesktops);
-        Desktop desktop = new Desktop(sb.toString());
+        DesktopModelo desktop = new DesktopModelo(sb.toString());
         
         return desktop;
     }
-    public static Switch criarSwitch(){
+    public static SwitchModelo criarSwitch(){
         StringBuilder sb = new StringBuilder("Switch "); 
         numeroSwithcs++;
         sb.append(numeroSwithcs);
-        Switch sw = new Switch(sb.toString());
+        SwitchModelo sw = new SwitchModelo(sb.toString());
         return sw;
     }
-    public static Hub criarHub(){
+    public static HubModelo criarHub(){
         StringBuilder sb = new StringBuilder("Hub "); 
         numeroHubs++;
         sb.append(numeroHubs);
-        Hub hub = new Hub(sb.toString());
+        HubModelo hub = new HubModelo(sb.toString());
         return hub;
     }
-    public static Roteador criarRoteador(){
+    public static RoteadorModelo criarRoteador(){
         StringBuilder sb = new StringBuilder("Roteador "); 
         numeroRoteadores++;
         sb.append(numeroRoteadores);
-        Roteador roteador = new Roteador(sb.toString());
+        RoteadorModelo roteador = new RoteadorModelo(sb.toString());
         return roteador;
     }
     
-    public static void editaDesktop(Desktop desktop, Ip ip ){
+    public static void editaDesktop(DesktopModelo desktop, Ip ip ){
         desktop.setIp(ip);
         
     }
-    public static void editaRoteador(Roteador roteador, Ip ip ){
+    public static void editaRoteador(RoteadorModelo roteador, Ip ip ){
         roteador.setIpPublico(ip);
         
     }
     
-    public static Desktop botaoSalvarDesktop(String nome, String ip, String gateway){
-        Desktop desktop = new Desktop(nome);
+    public static DesktopModelo botaoSalvarDesktop(String nome, String ip, String gateway){
+        DesktopModelo desktop = new DesktopModelo(nome);
         desktop.setIp(ip);
         desktop.setGateway(gateway);
         

@@ -3,14 +3,15 @@ package simuladorderedes.modelo.equipamento;
 import simuladorderedes.visao.TabelaArp;
 import simuladorderedes.modelo.*;
 
-public class Roteador extends Equipamento implements IIp{
+public class RoteadorModelo extends EquipamentoModelo implements IIp{
 
     private Ip ipPrivado;
     private Ip[] interfaces;
     private int marcaraDeRede;
     private TabelaArp tabelaArp;
+    private boolean dhcp = false;
 
-    public Roteador(String nome) {
+    public RoteadorModelo(String nome) {
         super(EnumTipoEquipamento.ROTEADOR, nome);
         
     }
@@ -34,7 +35,7 @@ public class Roteador extends Equipamento implements IIp{
     }
 
     @Override
-    public void Dhcp(Roteador roterador) {
+    public void Dhcp(RoteadorModelo roterador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -44,6 +45,14 @@ public class Roteador extends Equipamento implements IIp{
 
     public Ip getIpPrivado() {
         return ipPrivado;
+    }
+
+    @Override
+    public boolean getDhcp() {
+        return dhcp;
+    }
+    public void setDhcp(boolean dhcp) {
+        this.dhcp = dhcp;
     }
 
     

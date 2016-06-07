@@ -5,7 +5,7 @@ import simuladorderedes.modelo.EnderecoMac;
  * Classe abstrata
  * @author Filipe
  */
-public abstract class Equipamento {
+public abstract class EquipamentoModelo {
 
     private EnumTipoEquipamento tipo;
     private String nome;
@@ -14,7 +14,7 @@ public abstract class Equipamento {
     private boolean ligado;
     
 
-    public Equipamento(EnumTipoEquipamento tipo, String nome) {
+    public EquipamentoModelo(EnumTipoEquipamento tipo, String nome) {
         this.mac = new EnderecoMac();
         this.tipo = tipo;
         this.nome = nome;
@@ -35,4 +35,9 @@ public abstract class Equipamento {
     public String getNome(){
         return this.nome;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
 }

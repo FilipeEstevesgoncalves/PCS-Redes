@@ -5,25 +5,26 @@ import java.util.HashSet;
 import java.util.Set;
 import simuladorderedes.modelo.*;
 
-public class Desktop extends Equipamento implements IIp {
+public class DesktopModelo extends EquipamentoModelo implements IIp {
 
     /**
      * Ip da máquina
      */
     private Ip ip;
     private Ip gateway;
+    private boolean dhcp = false; 
     /**
      * Conjunto de pacotes da máquina
      */
     private Set<Pacote> pacotes = new HashSet<>();
     private TabelaArp tabelaArp;
 
-    public Desktop(String nome, Ip ip) {
+    public DesktopModelo(String nome, Ip ip) {
         super(EnumTipoEquipamento.DESKTOP, nome);
         this.ip = ip;
     }
 
-    public Desktop(String nome) {
+    public DesktopModelo(String nome) {
         super(EnumTipoEquipamento.DESKTOP, nome);
         this.ip = new Ip();
     }
@@ -51,7 +52,7 @@ public class Desktop extends Equipamento implements IIp {
     }
 
     @Override
-    public void Dhcp(Roteador roterador) {
+    public void Dhcp(RoteadorModelo roterador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -79,7 +80,17 @@ public class Desktop extends Equipamento implements IIp {
     public void setGateway(String gateway) {
         this.gateway = new Ip();
     }
-    
+
+
+    @Override
+    public boolean getDhcp() {
+        return dhcp;
+    }
+
+    @Override
+    public void setDhcp(boolean dhcp) {
+        this.dhcp = dhcp;
+    }
     
     
 

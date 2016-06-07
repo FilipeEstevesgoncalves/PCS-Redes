@@ -5,17 +5,23 @@
  */
 package simuladorderedes.visao;
 
+import javax.swing.JPanel;
+import simuladorderedes.modelo.*;
+import simuladorderedes.modelo.equipamento.EquipamentoModelo;
 /**
  *
  * @author Filipe
  */
-public class TabelaArp extends javax.swing.JPanel {
+public class TabelaArp extends JPanel {
 
     /**
      * Creates new form TabelaArp
      */
-    public TabelaArp() {
+    public TabelaArp(EquipamentoModelo equipameto) {
         initComponents();
+        
+        jLabelNome.setText(equipameto.getNome());
+        
     }
 
     /**
@@ -27,11 +33,11 @@ public class TabelaArp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        jLabel1.setText("Roteador <nome>");
+        jLabelNome.setText("Roteador ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,7 +60,7 @@ public class TabelaArp extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabelNome))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -64,7 +70,7 @@ public class TabelaArp extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addComponent(jLabelNome)
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(76, Short.MAX_VALUE))
@@ -73,7 +79,7 @@ public class TabelaArp extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelNome;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

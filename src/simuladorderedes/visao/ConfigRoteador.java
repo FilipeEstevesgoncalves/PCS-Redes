@@ -5,6 +5,11 @@
  */
 package simuladorderedes.visao;
 
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import simuladorderedes.modelo.equipamento.RoteadorModelo;
+
 /**
  *
  * @author Filipe
@@ -14,8 +19,26 @@ public class ConfigRoteador extends javax.swing.JFrame {
     /**
      * Creates new form ConfigRoteador
      */
-    public ConfigRoteador() {
+    private RoteadorModelo roteador;
+    public ConfigRoteador(RoteadorModelo r) {
+        this.roteador = r;
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jTextFieldNome.setText(roteador.getNome());
+        if(roteador.getIpPrivado() != null){
+            jTextFieldIpPrivado.setText(roteador.getIpPrivado().toString());
+        }
+        InicialBotaoGruppo();
+    }
+
+    private void InicialBotaoGruppo() {
+        if(roteador.getDhcp()){
+            jRadioButtonDhcp.setSelected(true);   
+        }else{
+            jRadioButtonEstatico.setSelected(true);
+        }
+        buttonGroupDHCP.add(jRadioButtonEstatico);
+        buttonGroupDHCP.add(jRadioButtonDhcp);
     }
 
     /**
@@ -27,6 +50,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupDHCP = new javax.swing.ButtonGroup();
         jButtonSalvar = new javax.swing.JButton();
         jRadioButtonDhcp = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -38,7 +62,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
         jTextFieldGateway = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextFieldServidorDns = new javax.swing.JTextField();
-        jTextFieldGateway1 = new javax.swing.JTextField();
+        jTextFieldIpPrivado = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButtonTabelaArp = new javax.swing.JButton();
 
@@ -52,11 +76,21 @@ public class ConfigRoteador extends javax.swing.JFrame {
         });
 
         jRadioButtonDhcp.setText("DHCP");
+        jRadioButtonDhcp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonDhcpActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/roteador.png"))); // NOI18N
 
         jRadioButtonEstatico.setText("Estático");
+        jRadioButtonEstatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonEstaticoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -97,7 +131,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(41, 41, 41)
-                        .addComponent(jTextFieldGateway1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jTextFieldIpPrivado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
@@ -143,7 +177,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel7))
-                            .addComponent(jTextFieldGateway1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldIpPrivado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButtonDhcp)
@@ -168,11 +202,24 @@ public class ConfigRoteador extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
 
+        
+        
+        this.dispose();
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonTabelaArpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTabelaArpActionPerformed
-        // TODO add your handling code here:
+        
+        TabelaArp tabela = new TabelaArp(roteador);
+        tabela.setVisible(true);
     }//GEN-LAST:event_jButtonTabelaArpActionPerformed
+
+    private void jRadioButtonDhcpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDhcpActionPerformed
+        roteador.setDhcp(true);
+    }//GEN-LAST:event_jRadioButtonDhcpActionPerformed
+
+    private void jRadioButtonEstaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEstaticoActionPerformed
+        roteador.setDhcp(false);
+    }//GEN-LAST:event_jRadioButtonEstaticoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +227,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupDHCP;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonTabelaArp;
     private javax.swing.JLabel jLabel1;
@@ -191,7 +239,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonDhcp;
     private javax.swing.JRadioButton jRadioButtonEstatico;
     private javax.swing.JTextField jTextFieldGateway;
-    private javax.swing.JTextField jTextFieldGateway1;
+    private javax.swing.JTextField jTextFieldIpPrivado;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldServidorDns;
     // End of variables declaration//GEN-END:variables
