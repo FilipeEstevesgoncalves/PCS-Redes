@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.*;
 import java.util.ArrayList;
-import simuladorderedes.controle.EquipamentosControle;
 import static simuladorderedes.controle.EquipamentosControle.criarDesktop;
 import static simuladorderedes.controle.EquipamentosControle.criarRoteador;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
@@ -24,16 +23,10 @@ public class TelaPrincipal extends JFrame {
     ArrayList<JInternalFrame> switchs;
     ArrayList<JInternalFrame> servidores;
 
-    int quantidadeDesktop;
-    int quantidadeServidor;
-    int quantidadeSwitch;
-    int quantidadeHub;
-    int quantidadeRoteador;
-
+    
     public TelaPrincipal() {
 
         intanciaEquipamentos();
-
         initComponents();
     }
 
@@ -41,7 +34,6 @@ public class TelaPrincipal extends JFrame {
 
         roteadores = new ArrayList<>();
         hubs = new ArrayList<>();
-        servidores = new ArrayList<>();
         desktops = new ArrayList<>();
         switchs = new ArrayList<>();
     }
@@ -63,7 +55,7 @@ public class TelaPrincipal extends JFrame {
         jButtonConectar = new javax.swing.JButton();
         LogInternalFrame = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TextArea1 = new javax.swing.JTextArea();
+        textAreaLog = new javax.swing.JTextArea();
         jDesktopPane = new javax.swing.JDesktopPane();
         MenuPrincipal = new javax.swing.JMenuBar();
         jMenuArquivo = new javax.swing.JMenu();
@@ -189,19 +181,19 @@ public class TelaPrincipal extends JFrame {
                     .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoHub, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         LogInternalFrame.setBorder(null);
         LogInternalFrame.setTitle("Logs");
         LogInternalFrame.setVisible(true);
 
-        TextArea1.setBackground(new java.awt.Color(0, 0, 0));
-        TextArea1.setColumns(20);
-        TextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        TextArea1.setRows(5);
-        TextArea1.setToolTipText("");
-        jScrollPane1.setViewportView(TextArea1);
+        textAreaLog.setBackground(new java.awt.Color(0, 0, 0));
+        textAreaLog.setColumns(20);
+        textAreaLog.setForeground(new java.awt.Color(255, 255, 255));
+        textAreaLog.setRows(5);
+        textAreaLog.setToolTipText("");
+        jScrollPane1.setViewportView(textAreaLog);
 
         javax.swing.GroupLayout LogInternalFrameLayout = new javax.swing.GroupLayout(LogInternalFrame.getContentPane());
         LogInternalFrame.getContentPane().setLayout(LogInternalFrameLayout);
@@ -351,12 +343,13 @@ public class TelaPrincipal extends JFrame {
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoDesktop()));
         desktopInternalFrame.add(botao);
-
+        textAreaLog.append("Criando...\n Desktop "+ desktop.getNome() + "\n ip:"+ desktop.getIp()+"\n");
         botao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                ConfigDesktop configDesktop = new ConfigDesktop(desktop);
+                
+                ConfigDesktop configDesktop = new ConfigDesktop(desktop, textAreaLog);
+                
                 configDesktop.setVisible(true);
             }
         });
@@ -366,6 +359,7 @@ public class TelaPrincipal extends JFrame {
         int i = desktops.indexOf(desktopInternalFrame);
         jDesktopPane.add(desktops.get(i));
 
+        
 
     }//GEN-LAST:event_botaoDesktopActionPerformed
 
@@ -377,16 +371,19 @@ public class TelaPrincipal extends JFrame {
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
         roteadorInternalFrame.add(botao);
-
+        textAreaLog.append("Criando...\n Roteador "+ roteador.getNome() + "\n ip:"+ roteador.getIp()+"\n");
+        
         botao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ConfigRoteador configRoteador = new ConfigRoteador(roteador);
+                ConfigRoteador configRoteador = new ConfigRoteador(roteador, textAreaLog);
+                
                 configRoteador.setVisible(true);
             }
         });
         roteadorInternalFrame.setVisible(true);
+        roteadorInternalFrame.setTitle(roteador.getNome());
         roteadores.add(roteadorInternalFrame);
         int i = roteadores.indexOf(roteadorInternalFrame);
         jDesktopPane.add(roteadores.get(i));
@@ -453,7 +450,6 @@ public class TelaPrincipal extends JFrame {
     private javax.swing.JPopupMenu ConfigIpPopupMenu2;
     private javax.swing.JInternalFrame LogInternalFrame;
     private javax.swing.JMenuBar MenuPrincipal;
-    private javax.swing.JTextArea TextArea1;
     private javax.swing.JMenu abaPlay;
     private javax.swing.JButton botaoDesktop;
     private javax.swing.JButton botaoHub;
@@ -480,5 +476,6 @@ public class TelaPrincipal extends JFrame {
     private javax.swing.JMenuItem jMenuSobre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextArea textAreaLog;
     // End of variables declaration//GEN-END:variables
 }

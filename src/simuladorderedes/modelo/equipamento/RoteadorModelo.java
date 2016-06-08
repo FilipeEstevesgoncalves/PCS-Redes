@@ -13,7 +13,7 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
 
     public RoteadorModelo(String nome) {
         super(EnumTipoEquipamento.ROTEADOR, nome);
-        
+        this.ipPrivado = new Ip();
     }
 
     public void nat() {
@@ -43,7 +43,8 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
         this.ipPrivado = ipPublico;
     }
 
-    public Ip getIpPrivado() {
+    public Ip getIp() {
+       
         return ipPrivado;
     }
 

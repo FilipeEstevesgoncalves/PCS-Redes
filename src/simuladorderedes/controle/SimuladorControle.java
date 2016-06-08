@@ -8,7 +8,6 @@ public class SimuladorControle {
      */
     public static void main(String args[]) {
 
-
         System.out.println("Página Inicial");     
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
