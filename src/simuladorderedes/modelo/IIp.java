@@ -5,7 +5,6 @@ import simuladorderedes.modelo.equipamento.RoteadorModelo;
 /**
  * Diferencia os equipamentos que tem ip dos que não tem
  * 
- * @author Filipe
  */
 public interface IIp {
 

@@ -1,12 +1,7 @@
 package simuladorderedes.controle;
  
-
 import simuladorderedes.visao.TelaPrincipal;
 
-/**
- *
- * @author Filipe
- */
 public class SimuladorControle {
         /**
      * @param args the command line arguments

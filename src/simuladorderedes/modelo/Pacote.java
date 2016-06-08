@@ -1,8 +1,6 @@
 package simuladorderedes.modelo;
-/**
- *
- * @author Filipe
- */
+
+
 public class Pacote {
     
     /**
@@ -15,6 +13,4 @@ public class Pacote {
     private EnderecoMac macEntrada;
     private EnderecoMac macSaida;
 
-    
-    
 }

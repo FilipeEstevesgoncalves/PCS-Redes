@@ -10,6 +10,7 @@ import javax.swing.tree.DefaultTreeCellEditor;
 import simuladorderedes.controle.EquipamentosControle;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import static simuladorderedes.controle.EquipamentosControle.botaoSalvarDesktop;
+import simuladorderedes.modelo.Ip;
 /**
  *
  * @author Filipe
@@ -28,7 +29,11 @@ public class ConfigDesktop extends javax.swing.JFrame {
 
         jTextFieldNomeDesktop.setText(desktop.getNome());
         if(desktop.getIp() != null){
-            jTextFieldIpDesktop.setText(desktop.getIp().toString());
+            Ip ip = desktop.getIp();
+            jTextFieldIpDesktop1.setText(ip.getOctetoNaPosicao(0));
+            jTextFieldIpDesktop2.setText(ip.getOctetoNaPosicao(1));
+            jTextFieldIpDesktop3.setText(ip.getOctetoNaPosicao(2));
+            jTextFieldIpDesktop4.setText(ip.getOctetoNaPosicao(3));
         }
         
         InicialBotaoGrupo();
@@ -70,11 +75,17 @@ public class ConfigDesktop extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextFieldGateway = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldIpDesktop = new javax.swing.JTextField();
+        jTextFieldIpDesktop2 = new javax.swing.JTextField();
         jButtonSalvar = new javax.swing.JButton();
         jRadioButtonDhcp = new javax.swing.JRadioButton();
         jRadioButtonEstatico = new javax.swing.JRadioButton();
         jButtonDHCP = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldIpDesktop1 = new javax.swing.JTextField();
+        jTextFieldIpDesktop3 = new javax.swing.JTextField();
+        jTextFieldIpDesktop4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -113,6 +124,12 @@ public class ConfigDesktop extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Ip");
 
+        jTextFieldIpDesktop2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIpDesktop2ActionPerformed(evt);
+            }
+        });
+
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +152,18 @@ public class ConfigDesktop extends javax.swing.JFrame {
                 jButtonDHCPActionPerformed(evt);
             }
         });
+
+        jLabel3.setText(".");
+
+        jTextFieldIpDesktop3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIpDesktop3ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText(".");
+
+        jLabel8.setText(".");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,10 +201,26 @@ public class ConfigDesktop extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldNomeDesktop)
-                                    .addComponent(jTextFieldIpDesktop))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextFieldNomeDesktop))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jTextFieldIpDesktop1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldIpDesktop2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldIpDesktop3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldIpDesktop4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 48, Short.MAX_VALUE)))))))
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -195,7 +240,13 @@ public class ConfigDesktop extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextFieldIpDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldIpDesktop2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIpDesktop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIpDesktop3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jTextFieldIpDesktop4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
@@ -222,8 +273,10 @@ public class ConfigDesktop extends javax.swing.JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         
         desktop.setNome(jTextFieldNomeDesktop.getText());
-        String ip = jTextFieldIpDesktop.getText();
-        String gateway = jTextFieldGateway.getText();
+        Ip ip = new Ip(jTextFieldIpDesktop1.getText(),jTextFieldIpDesktop2.getText(),
+                jTextFieldIpDesktop3.getText(),jTextFieldIpDesktop4.getText());
+        desktop.setIp(ip);
+        
         this.dispose();
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
@@ -240,6 +293,14 @@ public class ConfigDesktop extends javax.swing.JFrame {
         desktop.setDhcp(false);
     }//GEN-LAST:event_jRadioButtonEstaticoActionPerformed
 
+    private void jTextFieldIpDesktop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIpDesktop3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIpDesktop3ActionPerformed
+
+    private void jTextFieldIpDesktop2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIpDesktop2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIpDesktop2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupDHCP;
     private javax.swing.JButton jButtonDHCP;
@@ -247,9 +308,12 @@ public class ConfigDesktop extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -258,7 +322,10 @@ public class ConfigDesktop extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JTextField jTextFieldGateway;
-    private javax.swing.JTextField jTextFieldIpDesktop;
+    private javax.swing.JTextField jTextFieldIpDesktop1;
+    private javax.swing.JTextField jTextFieldIpDesktop2;
+    private javax.swing.JTextField jTextFieldIpDesktop3;
+    private javax.swing.JTextField jTextFieldIpDesktop4;
     private javax.swing.JTextField jTextFieldNomeDesktop;
     // End of variables declaration//GEN-END:variables
 }

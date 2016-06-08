@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package simuladorderedes.controle;
 import simuladorderedes.modelo.Ip;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
 import simuladorderedes.modelo.equipamento.ServidorModelo;
-/**
- *
- * @author Filipe
- */
+
+
 public class Controle {
 //    public static void main(String args[]) {
 //        DesktopModelo pc1  = new DesktopModelo("Pc1");

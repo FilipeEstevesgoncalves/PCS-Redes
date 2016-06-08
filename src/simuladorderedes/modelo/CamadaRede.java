@@ -1,8 +1,6 @@
 package simuladorderedes.modelo;
-/**
- *
- * @author Filipe
- */
+
+
 enum EnumProtocoRede{
     TCP, UDP;
 }
