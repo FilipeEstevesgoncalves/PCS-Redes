@@ -12,12 +12,12 @@ import simuladorderedes.modelo.equipamento.EquipamentoModelo;
  *
  * @author Filipe
  */
-public class TabelaArp extends JPanel {
+public class TabelaArpVisao extends JPanel {
 
     /**
      * Creates new form TabelaArp
      */
-    public TabelaArp(EquipamentoModelo equipameto) {
+    public TabelaArpVisao(EquipamentoModelo equipameto) {
         initComponents();
         
         jLabelNome.setText(equipameto.getNome());

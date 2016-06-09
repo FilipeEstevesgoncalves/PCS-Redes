@@ -1,6 +1,6 @@
 package simuladorderedes.modelo.equipamento;
 
-import simuladorderedes.visao.TabelaArp;
+import simuladorderedes.visao.TabelaArpVisao;
 import simuladorderedes.modelo.*;
 
 public class RoteadorModelo extends EquipamentoModelo implements IIp{
@@ -8,7 +8,7 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
     private Ip ipPrivado;
     private Ip[] interfaces;
     private int marcaraDeRede;
-    private TabelaArp tabelaArp;
+    private TabelaArpVisao tabelaArp;
     private boolean dhcp = false;
 
     public RoteadorModelo(String nome) {

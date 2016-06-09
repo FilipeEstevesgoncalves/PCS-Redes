@@ -2,7 +2,7 @@ package simuladorderedes.modelo.equipamento;
 
 
 
-import simuladorderedes.modelo.TabelaMac;
+import simuladorderedes.modelo.TabelaMacModelo;
 
 /**
  * Transparente(hosts e roteadores não sabem da sua presença)
@@ -12,13 +12,13 @@ import simuladorderedes.modelo.TabelaMac;
 public class SwitchModelo extends EquipamentoModelo {
 
     Integer [] porta;
-    private TabelaMac tabelaComutacao;
+    private TabelaMacModelo tabelaComutacao;
  
     
 
     public SwitchModelo( String nome) {
         super(EnumTipoEquipamento.SWITCH, nome);
-        this.tabelaComutacao = new TabelaMac();
+        this.tabelaComutacao = new TabelaMacModelo();
     }
 
     @Override

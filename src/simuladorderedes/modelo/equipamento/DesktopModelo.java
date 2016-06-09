@@ -1,9 +1,10 @@
 package simuladorderedes.modelo.equipamento;
 
-import simuladorderedes.visao.TabelaArp;
+import simuladorderedes.visao.TabelaArpVisao;
 import java.util.HashSet;
 import java.util.Set;
 import simuladorderedes.modelo.*;
+import simuladorderedes.modelo.Ip;
 
 public class DesktopModelo extends EquipamentoModelo implements IIp {
 
@@ -17,11 +18,17 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
      * Conjunto de pacotes da máquina
      */
     private Set<Pacote> pacotes = new HashSet<>();
-    private TabelaArp tabelaArp;
+    private TabelaArpModelo tabelaArp;
 
     public DesktopModelo(String nome, Ip ip) {
         super(EnumTipoEquipamento.DESKTOP, nome);
         this.ip = ip;
+        Ip p1 = new Ip();
+        Ip p2 = new Ip();
+        EnderecoMac mac1 = new EnderecoMac();
+        EnderecoMac mac2 = new EnderecoMac();
+        tabelaArp.put(mac1, p1);
+        tabelaArp.put(mac2 , p2);
     }
 
     public DesktopModelo(String nome) {
@@ -91,6 +98,8 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     public void setDhcp(boolean dhcp) {
         this.dhcp = dhcp;
     }
+
+    
     
     
 

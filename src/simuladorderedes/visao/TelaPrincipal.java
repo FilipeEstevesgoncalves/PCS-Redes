@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import static simuladorderedes.controle.EquipamentosControle.criarDesktop;
 import static simuladorderedes.controle.EquipamentosControle.criarRoteador;
+import simuladorderedes.controle.LogControle;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
 
@@ -25,9 +26,10 @@ public class TelaPrincipal extends JFrame {
 
     
     public TelaPrincipal() {
-
+        
         intanciaEquipamentos();
         initComponents();
+        textAreaLog.setEnabled(false);
     }
 
     private void intanciaEquipamentos() {
@@ -62,6 +64,7 @@ public class TelaPrincipal extends JFrame {
         jMenuNovo = new javax.swing.JMenuItem();
         jMenuAbrir = new javax.swing.JMenuItem();
         jMenuSalvar = new javax.swing.JMenuItem();
+        jMenuSalvar1 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuSair = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
@@ -181,7 +184,7 @@ public class TelaPrincipal extends JFrame {
                     .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoHub, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         LogInternalFrame.setBorder(null);
@@ -199,15 +202,13 @@ public class TelaPrincipal extends JFrame {
         LogInternalFrame.getContentPane().setLayout(LogInternalFrameLayout);
         LogInternalFrameLayout.setHorizontalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogInternalFrameLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
         );
         LogInternalFrameLayout.setVerticalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogInternalFrameLayout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDesktopPaneLayout = new javax.swing.GroupLayout(jDesktopPane);
@@ -249,6 +250,15 @@ public class TelaPrincipal extends JFrame {
             }
         });
         jMenuArquivo.add(jMenuSalvar);
+
+        jMenuSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/save.png"))); // NOI18N
+        jMenuSalvar1.setText("Salvar log");
+        jMenuSalvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSalvar1ActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(jMenuSalvar1);
         jMenuArquivo.add(jSeparator1);
 
         jMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu/exit.png"))); // NOI18N
@@ -315,15 +325,14 @@ public class TelaPrincipal extends JFrame {
                     .addComponent(equipamentosInternalFrame)
                     .addComponent(jDesktopPane))
                 .addGap(18, 18, 18)
-                .addComponent(LogInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(LogInternalFrame))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(LogInternalFrame, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(equipamentosInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -343,7 +352,7 @@ public class TelaPrincipal extends JFrame {
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoDesktop()));
         desktopInternalFrame.add(botao);
-        textAreaLog.append("Criando...\n Desktop "+ desktop.getNome() + "\n ip:"+ desktop.getIp()+"\n");
+        textAreaLog.append("\nCriando...\n Desktop "+ desktop.getNome() + "\n ip:"+ desktop.getIp());
         botao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -371,7 +380,7 @@ public class TelaPrincipal extends JFrame {
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
         roteadorInternalFrame.add(botao);
-        textAreaLog.append("Criando...\n Roteador "+ roteador.getNome() + "\n ip:"+ roteador.getIp()+"\n");
+        textAreaLog.append("\nCriando...\n Roteador "+ roteador.getNome() + "\n ip:"+ roteador.getIp());
         
         botao.addActionListener(new ActionListener() {
             @Override
@@ -446,6 +455,11 @@ public class TelaPrincipal extends JFrame {
     private void jButtonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectarActionPerformed
     }//GEN-LAST:event_jButtonConectarActionPerformed
 
+    private void jMenuSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalvar1ActionPerformed
+        LogControle log = new LogControle();
+        log.salvarLog(textAreaLog.getText());
+    }//GEN-LAST:event_jMenuSalvar1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu ConfigIpPopupMenu2;
     private javax.swing.JInternalFrame LogInternalFrame;
@@ -473,6 +487,7 @@ public class TelaPrincipal extends JFrame {
     private javax.swing.JMenuItem jMenuPreferencias;
     private javax.swing.JMenuItem jMenuSair;
     private javax.swing.JMenuItem jMenuSalvar;
+    private javax.swing.JMenuItem jMenuSalvar1;
     private javax.swing.JMenuItem jMenuSobre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;

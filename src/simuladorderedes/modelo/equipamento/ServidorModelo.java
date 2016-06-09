@@ -2,12 +2,12 @@ package simuladorderedes.modelo.equipamento;
 
 import simuladorderedes.modelo.IIp;
 import simuladorderedes.modelo.Ip;
-import simuladorderedes.modelo.TabelaArp;
+import simuladorderedes.modelo.TabelaArpModelo;
 
 public class ServidorModelo extends EquipamentoModelo implements IIp {
 
     private Ip ip;
-    private TabelaArp tabelaArp;
+    private TabelaArpModelo tabelaArp;
     private boolean dhcp = false;
     /**
      * O servidor tem um ip obrigatóriamente
