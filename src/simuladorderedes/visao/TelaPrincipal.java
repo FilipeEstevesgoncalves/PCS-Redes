@@ -6,11 +6,14 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.*;
 import java.util.ArrayList;
+import simuladorderedes.controle.EquipamentosControle;
 import static simuladorderedes.controle.EquipamentosControle.criarDesktop;
 import static simuladorderedes.controle.EquipamentosControle.criarRoteador;
+import static simuladorderedes.controle.EquipamentosControle.criarSwitch;
 import simuladorderedes.controle.LogControle;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
+import simuladorderedes.modelo.equipamento.SwitchModelo;
 
 /**
  *
@@ -399,12 +402,17 @@ public class TelaPrincipal extends JFrame {
     }//GEN-LAST:event_botaoRoteadorActionPerformed
 
     private void botaoSwitchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSwitchActionPerformed
-        JInternalFrame switchInternalFrame = new JInternalFrame("Switch", false, false, false, false);
+        
+        SwitchModelo sw = criarSwitch();
+        JInternalFrame switchInternalFrame = new JInternalFrame(sw.getNome(), false, false, false, false);
         switchInternalFrame.setBounds(150, 150, 100, 100);
         JButton botao = new JButton();
-        botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoSwitch()));
+        botao.setIcon(new ImageIcon(CaminhoImagens.getCaminhoSwitch()));
         switchInternalFrame.add(botao);
-
+        textAreaLog.append("\nCriando...\n Switch "+ sw.getNome());
+        
+        
+        
         switchInternalFrame.setVisible(true);
         switchs.add(switchInternalFrame);
         int i = switchs.indexOf(switchInternalFrame);

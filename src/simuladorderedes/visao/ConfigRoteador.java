@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package simuladorderedes.visao;
 
 import javax.swing.JTextArea;
 import simuladorderedes.modelo.Ip;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
 
-/**
- *
- * @author Filipe
- */
 public class ConfigRoteador extends javax.swing.JFrame {
 
     /**
