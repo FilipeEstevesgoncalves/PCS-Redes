@@ -8,10 +8,12 @@ import javax.swing.*;
 import java.util.ArrayList;
 import simuladorderedes.controle.EquipamentosControle;
 import static simuladorderedes.controle.EquipamentosControle.criarDesktop;
+import static simuladorderedes.controle.EquipamentosControle.criarHub;
 import static simuladorderedes.controle.EquipamentosControle.criarRoteador;
 import static simuladorderedes.controle.EquipamentosControle.criarSwitch;
 import simuladorderedes.controle.LogControle;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
+import simuladorderedes.modelo.equipamento.HubModelo;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
 import simuladorderedes.modelo.equipamento.SwitchModelo;
 
@@ -57,7 +59,6 @@ public class TelaPrincipal extends JFrame {
         botaoRoteador = new javax.swing.JButton();
         botaoSwitch = new javax.swing.JButton();
         botaoHub = new javax.swing.JButton();
-        jButtonConectar = new javax.swing.JButton();
         LogInternalFrame = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaLog = new javax.swing.JTextArea();
@@ -153,13 +154,6 @@ public class TelaPrincipal extends JFrame {
             }
         });
 
-        jButtonConectar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/conexao.png"))); // NOI18N
-        jButtonConectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConectarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout equipamentosInternalFrameLayout = new javax.swing.GroupLayout(equipamentosInternalFrame.getContentPane());
         equipamentosInternalFrame.getContentPane().setLayout(equipamentosInternalFrameLayout);
         equipamentosInternalFrameLayout.setHorizontalGroup(
@@ -173,21 +167,18 @@ public class TelaPrincipal extends JFrame {
                 .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botaoRoteador, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jButtonConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         equipamentosInternalFrameLayout.setVerticalGroup(
             equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(equipamentosInternalFrameLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(equipamentosInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoRoteador, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoHub, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         LogInternalFrame.setBorder(null);
@@ -209,16 +200,14 @@ public class TelaPrincipal extends JFrame {
         );
         LogInternalFrameLayout.setVerticalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogInternalFrameLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout jDesktopPaneLayout = new javax.swing.GroupLayout(jDesktopPane);
         jDesktopPane.setLayout(jDesktopPaneLayout);
         jDesktopPaneLayout.setHorizontalGroup(
             jDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 524, Short.MAX_VALUE)
         );
         jDesktopPaneLayout.setVerticalGroup(
             jDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,9 +313,9 @@ public class TelaPrincipal extends JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(equipamentosInternalFrame)
-                    .addComponent(jDesktopPane))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(equipamentosInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(LogInternalFrame))
         );
@@ -420,12 +409,13 @@ public class TelaPrincipal extends JFrame {
     }//GEN-LAST:event_botaoSwitchActionPerformed
 
     private void botaoHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoHubActionPerformed
+        HubModelo hub = criarHub();
         JInternalFrame hubInternalFrame = new JInternalFrame("Hub", false, false, false, false);
         hubInternalFrame.setBounds(350, 350, 100, 100);
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoHub()));
         hubInternalFrame.add(botao);
-
+        textAreaLog.append("\nCriando...\n Hub "+ hub.getNome());
         hubInternalFrame.setVisible(true);
         hubs.add(hubInternalFrame);
         int i = hubs.indexOf(hubInternalFrame);
@@ -460,9 +450,6 @@ public class TelaPrincipal extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuEnviarMensagemActionPerformed
 
-    private void jButtonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectarActionPerformed
-    }//GEN-LAST:event_jButtonConectarActionPerformed
-
     private void jMenuSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalvar1ActionPerformed
         LogControle log = new LogControle();
         log.salvarLog(textAreaLog.getText());
@@ -478,7 +465,6 @@ public class TelaPrincipal extends JFrame {
     private javax.swing.JButton botaoRoteador;
     private javax.swing.JButton botaoSwitch;
     private javax.swing.JInternalFrame equipamentosInternalFrame;
-    private javax.swing.JButton jButtonConectar;
     private javax.swing.JDesktopPane jDesktopPane;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane4;
