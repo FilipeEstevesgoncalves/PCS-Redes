@@ -61,4 +61,8 @@ public class EquipamentosControle {
         return desktop;
         
     }
+    
+    public void redeControle(){
+        
+    }
 }

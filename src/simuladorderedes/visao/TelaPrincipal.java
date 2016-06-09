@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.*;
 import java.util.ArrayList;
-import simuladorderedes.controle.EquipamentosControle;
 import static simuladorderedes.controle.EquipamentosControle.criarDesktop;
 import static simuladorderedes.controle.EquipamentosControle.criarHub;
 import static simuladorderedes.controle.EquipamentosControle.criarRoteador;
@@ -23,6 +22,7 @@ import simuladorderedes.modelo.equipamento.SwitchModelo;
  */
 public class TelaPrincipal extends JFrame {
 
+    
     ArrayList<JInternalFrame> roteadores;
     ArrayList<JInternalFrame> desktops;
     ArrayList<JInternalFrame> hubs;
@@ -38,7 +38,6 @@ public class TelaPrincipal extends JFrame {
     }
 
     private void intanciaEquipamentos() {
-
         roteadores = new ArrayList<>();
         hubs = new ArrayList<>();
         desktops = new ArrayList<>();
@@ -178,7 +177,7 @@ public class TelaPrincipal extends JFrame {
                     .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoHub, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         LogInternalFrame.setBorder(null);
@@ -196,7 +195,7 @@ public class TelaPrincipal extends JFrame {
         LogInternalFrame.getContentPane().setLayout(LogInternalFrameLayout);
         LogInternalFrameLayout.setHorizontalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
         );
         LogInternalFrameLayout.setVerticalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +206,7 @@ public class TelaPrincipal extends JFrame {
         jDesktopPane.setLayout(jDesktopPaneLayout);
         jDesktopPaneLayout.setHorizontalGroup(
             jDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jDesktopPaneLayout.setVerticalGroup(
             jDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,11 +312,12 @@ public class TelaPrincipal extends JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(equipamentosInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(equipamentosInternalFrame)
+                    .addComponent(jDesktopPane))
                 .addGap(18, 18, 18)
-                .addComponent(LogInternalFrame))
+                .addComponent(LogInternalFrame)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,9 +359,6 @@ public class TelaPrincipal extends JFrame {
         desktops.add(desktopInternalFrame);
         int i = desktops.indexOf(desktopInternalFrame);
         jDesktopPane.add(desktops.get(i));
-
-        
-
     }//GEN-LAST:event_botaoDesktopActionPerformed
 
     private void botaoRoteadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRoteadorActionPerformed

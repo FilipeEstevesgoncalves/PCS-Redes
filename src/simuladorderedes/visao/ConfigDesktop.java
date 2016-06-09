@@ -383,7 +383,7 @@ public class ConfigDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonDhcpActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        TabelaArpVisao tabela = new TabelaArpVisao(desktop);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

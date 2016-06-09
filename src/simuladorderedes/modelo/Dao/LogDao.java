@@ -1,6 +1,5 @@
 package simuladorderedes.modelo.Dao;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,6 +16,8 @@ public class LogDao extends JFrame{
     c.setLayout(layout);
     
     log = new JTextArea();
+    log.setEnabled(false);
+    log.setBackground(Color.black);
     log.setText(lgoString);
     log.setLineWrap(true);
     
@@ -25,12 +26,16 @@ public class LogDao extends JFrame{
           public void actionPerformed(ActionEvent e){
              JFileChooser fc = new JFileChooser();
       
-             if(fc.showSaveDialog(LogDao.this) != JFileChooser.APPROVE_OPTION)
-                return;
+             if(fc.showSaveDialog(LogDao.this) != JFileChooser.APPROVE_OPTION){
+                 return;
+             }
+                
             
              File arquivo = fc.getSelectedFile();
-             if(arquivo == null)
+             if(arquivo == null){
                  return;
+             }
+                 
 
              FileWriter writer = null;
              try {
@@ -46,7 +51,7 @@ public class LogDao extends JFrame{
                        writer.close();
                    } 
                    catch (IOException x){
-                       //   
+                       System.out.println(x);  
                 }
              }
             }

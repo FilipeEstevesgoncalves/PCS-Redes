@@ -14,9 +14,7 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     private Ip ip;
     private Ip gateway;
     private boolean dhcp = false; 
-    /**
-     * Conjunto de pacotes da máquina
-     */
+   
     private Set<Pacote> pacotes = new HashSet<>();
     private TabelaArpModelo tabelaArp;
 
@@ -25,10 +23,10 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
         this.ip = ip;
         Ip p1 = new Ip();
         Ip p2 = new Ip();
-        EnderecoMac mac1 = new EnderecoMac();
-        EnderecoMac mac2 = new EnderecoMac();
-        tabelaArp.put(mac1, p1);
-        tabelaArp.put(mac2 , p2);
+//        EnderecoMac mac1 = new EnderecoMac();
+//        EnderecoMac mac2 = new EnderecoMac();
+//        tabelaArp.put(mac1, p1);
+//        tabelaArp.put(mac2 , p2);
     }
 
     public DesktopModelo(String nome) {
