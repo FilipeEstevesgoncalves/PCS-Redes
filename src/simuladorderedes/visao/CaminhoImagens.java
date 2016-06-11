@@ -1,13 +1,9 @@
 package simuladorderedes.visao;
-
 /**
  *
  * @author Filipe
  */
 public  class  CaminhoImagens {
-
-    
-    
     private static final String CAMINHOHUB = "src/imagens/hub.png";
     private static final String CAMINHO_ROTEADOR = "src/imagens/roteador.png";
     private static final String CAMINHO_SERVIDOR = "src/imagens/servidor.png";
@@ -33,10 +29,6 @@ public  class  CaminhoImagens {
     public static String getCaminhoSwitch() {
         return CAMINHO_SWITCH;
     }
- 
-    
-    
- 
 }
 
 

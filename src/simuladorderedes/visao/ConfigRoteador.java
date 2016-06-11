@@ -1,6 +1,9 @@
 package simuladorderedes.visao;
 
+import java.awt.Desktop;
 import javax.swing.JTextArea;
+import simuladorderedes.controle.EquipamentosControle;
+import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
 
@@ -19,7 +22,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
         
         jTextFieldNome.setText(roteador.getNome());
         if(roteador.getIp() != null){
-            Ip ip = roteador.getIp();
+            Ip ip =  roteador.getIp();
             jTextFieldIpRoteador1.setText(ip.getOctetoNaPosicao(0));
             jTextFieldIpRoteador2.setText(ip.getOctetoNaPosicao(1));
             jTextFieldIpRoteador3.setText(ip.getOctetoNaPosicao(2));
@@ -253,24 +256,39 @@ public class ConfigRoteador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        String nome = jTextFieldNome.getText();
+        
+        Ip ip = new Ip(jTextFieldIpRoteador1.getText(),jTextFieldIpRoteador2.getText(),
+                jTextFieldIpRoteador3.getText(),jTextFieldIpRoteador4.getText());
+        
+        if(EquipamentosControle.botaoSalvarRoteador(roteador, nome, ip)){
+            TelaPrincipal.escreveNoLog("\nAlterações salvas no "+ roteador.getTipo() +": "+roteador.getNome());
+        }
 
         this.dispose();
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonTabelaArpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTabelaArpActionPerformed
-        
-        TabelaArpVisao tabela = new TabelaArpVisao(roteador);
-        tabela.setVisible(true);
+
+        TelaPrincipal.escreveNoLog("\n"+roteador.getTipo()+": "+ roteador.getNome());
+        TelaPrincipal.escreveNoLog(roteador.getArp());
     }//GEN-LAST:event_jButtonTabelaArpActionPerformed
 
     private void jRadioButtonDhcpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDhcpActionPerformed
-        log.append("\nDHCP ligado");
-        roteador.setDhcp(true);
+        if(!roteador.getDhcp()){
+            log.append("\nDHCP ligado");
+            roteador.setDhcp(true);
+        }
+        
+        
     }//GEN-LAST:event_jRadioButtonDhcpActionPerformed
 
     private void jRadioButtonEstaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEstaticoActionPerformed
-        log.append("\nDHCP estático");
-        roteador.setDhcp(false);
+        if(roteador.getDhcp()){
+            log.append("\nDHCP estático");
+            roteador.setDhcp(false);
+        }
+        
     }//GEN-LAST:event_jRadioButtonEstaticoActionPerformed
 
     private void jTextFieldIpRoteador3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIpRoteador3ActionPerformed

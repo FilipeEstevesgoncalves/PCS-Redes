@@ -5,26 +5,30 @@
  */
 package simuladorderedes.visao;
 
+import javax.accessibility.AccessibleContext;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.tree.DefaultTreeCellEditor;
 import simuladorderedes.controle.EquipamentosControle;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import static simuladorderedes.controle.EquipamentosControle.botaoSalvarDesktop;
+import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 
 /**
  *
  * @author Filipe
  */
-public class ConfigDesktop extends javax.swing.JFrame {
+public class ConfigDesktop extends JFrame {
 
     /**
      * Creates new form Config
      */
     private DesktopModelo desktop;
     private JTextArea log;
-    public ConfigDesktop(DesktopModelo d, JTextArea Textlog) {
+  
+    public ConfigDesktop(DesktopModelo d, JTextArea Textlog, int numeroDeEquipamentos) {
+ 
         log = Textlog;
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -96,7 +100,9 @@ public class ConfigDesktop extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonTabelaArp = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jComboBoxEquipamentos = new javax.swing.JComboBox<>();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -199,10 +205,19 @@ public class ConfigDesktop extends javax.swing.JFrame {
 
         jLabel11.setText(".");
 
-        jButton1.setText("Tabela Arp");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTabelaArp.setText("Tabela Arp");
+        jButtonTabelaArp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonTabelaArpActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Conectar");
+
+        jComboBoxEquipamentos.setModel(new javax.swing.DefaultComboBoxModel<>(EquipamentosControle.getNomes()));
+        jComboBoxEquipamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEquipamentosActionPerformed(evt);
             }
         });
 
@@ -211,26 +226,38 @@ public class ConfigDesktop extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(191, 191, 191))
-                            .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jRadioButtonDhcp)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonEstatico)))
+                                .addComponent(jRadioButtonEstatico))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel5)
+                                .addGap(191, 191, 191)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel12)
+                                .addGap(57, 57, 57))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jComboBoxEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(40, 153, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -269,11 +296,13 @@ public class ConfigDesktop extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldIpDesktop7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButtonDHCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(252, 252, 252)
+                                .addComponent(jButtonTabelaArp)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -281,7 +310,6 @@ public class ConfigDesktop extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(23, 23, 23)
@@ -300,20 +328,27 @@ public class ConfigDesktop extends javax.swing.JFrame {
                                 .addComponent(jTextFieldIpDesktop3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel7)
-                                .addComponent(jTextFieldIpDesktop4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldIpDesktop4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jRadioButtonDhcp)
+                                    .addComponent(jRadioButtonEstatico))
+                                .addGap(2, 2, 2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonTabelaArp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonDHCP)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButtonDhcp)
-                            .addComponent(jRadioButtonEstatico))
-                        .addGap(2, 2, 2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonDHCP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addComponent(jComboBoxEquipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -335,10 +370,15 @@ public class ConfigDesktop extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         
-        desktop.setNome(jTextFieldNomeDesktop.getText());
+        String nome = jTextFieldNomeDesktop.getText();
+        
         Ip ip = new Ip(jTextFieldIpDesktop1.getText(),jTextFieldIpDesktop2.getText(),
                 jTextFieldIpDesktop3.getText(),jTextFieldIpDesktop4.getText());
-        desktop.setIp(ip);
+        
+        if(EquipamentosControle.botaoSalvarDesktop(desktop, nome, ip)){
+            TelaPrincipal.escreveNoLog("\nAlterações salvas no "+ desktop.getTipo() +": "+desktop.getNome());
+        }
+
         this.dispose();
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
@@ -357,8 +397,11 @@ public class ConfigDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDHCPActionPerformed
 
     private void jRadioButtonEstaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEstaticoActionPerformed
-        log.append("\nDHCP Estático");
-        desktop.setDhcp(false);
+        if(desktop.getDhcp()){
+            log.append("\nDHCP Estático");
+            desktop.setDhcp(false);
+        }
+        
     }//GEN-LAST:event_jRadioButtonEstaticoActionPerformed
 
     private void jTextFieldIpDesktop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIpDesktop3ActionPerformed
@@ -378,23 +421,34 @@ public class ConfigDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldIpDesktop8ActionPerformed
 
     private void jRadioButtonDhcpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDhcpActionPerformed
-        log.append("\nDHCP ligado");
-        desktop.setDhcp(true);
+        if(!desktop.getDhcp()){
+            log.append("\nDHCP ligado");
+            desktop.setDhcp(true);
+        }
+        
     }//GEN-LAST:event_jRadioButtonDhcpActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TabelaArpVisao tabela = new TabelaArpVisao(desktop);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonTabelaArpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTabelaArpActionPerformed
+
+        TelaPrincipal.escreveNoLog("\n"+desktop.getTipo()+": "+ desktop.getNome());
+        TelaPrincipal.escreveNoLog(desktop.getArp());
+    }//GEN-LAST:event_jButtonTabelaArpActionPerformed
+
+    private void jComboBoxEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxEquipamentosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupDHCP;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonDHCP;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonTabelaArp;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JComboBox<String> jComboBoxEquipamentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -10,8 +10,7 @@ public class Ip {
      * uma StringBuilder
      */
     public Ip() {
-
-        this.ip = new StringBuilder();
+        ip = new StringBuilder();
         for (int i = 0; i < 4; i++) {
             octetos[i] = randInt(0, 255);
             this.ip.append(octetos[i]);

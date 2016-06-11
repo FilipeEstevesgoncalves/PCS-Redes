@@ -1,6 +1,7 @@
 package simuladorderedes.modelo.equipamento;
 
 import simuladorderedes.modelo.EnderecoMac;
+import simuladorderedes.modelo.Ip;
 /**
  * Classe abstrata
  * @author Filipe
@@ -39,5 +40,8 @@ public abstract class EquipamentoModelo {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public abstract boolean temIp();
+
+    public abstract void adicionaMac(EnderecoMac mac);
     
 }

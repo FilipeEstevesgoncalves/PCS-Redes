@@ -1,32 +1,31 @@
 package simuladorderedes.modelo.equipamento;
 
-import simuladorderedes.visao.TabelaArpVisao;
-import java.util.HashSet;
-import java.util.Set;
+
 import simuladorderedes.modelo.*;
 import simuladorderedes.modelo.Ip;
+import simuladorderedes.visao.TelaPrincipal;
 
 public class DesktopModelo extends EquipamentoModelo implements IIp {
 
-    /**
-     * Ip da máquina
-     */
     private Ip ip;
     private Ip gateway;
-    private boolean dhcp = false; 
-   
-    private Set<Pacote> pacotes = new HashSet<>();
-    private TabelaArpModelo tabelaArp;
+    private boolean dhcp = false;
+    private EnderecoMac porta;
+    private int CAPACIDADE = 10;
+    private   TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE];
+    private TuplaMac mac;
+    
+    private int arpAdicionados = 0;
+
 
     public DesktopModelo(String nome, Ip ip) {
         super(EnumTipoEquipamento.DESKTOP, nome);
         this.ip = ip;
-        Ip p1 = new Ip();
-        Ip p2 = new Ip();
-//        EnderecoMac mac1 = new EnderecoMac();
-//        EnderecoMac mac2 = new EnderecoMac();
-//        tabelaArp.put(mac1, p1);
-//        tabelaArp.put(mac2 , p2);
+        
+
+    }
+    public void conectaAparelho(EnderecoMac mac){
+        this.mac = new TuplaMac(mac, 1);
     }
 
     public DesktopModelo(String nome) {
@@ -66,26 +65,22 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
         this.ip = ip;
     }
 
+    public boolean temIp() {
+        return true;
+    }
+
     public Ip getIp() {
         return ip;
     }
 
-    public Set<Pacote> getPacotes() {
-        return pacotes;
+    @Override
+    public void adicionaMac(EnderecoMac mac) {
+        porta = mac;
     }
 
-    public void setGateway(Ip gateway) {
-        this.gateway = gateway;
+    public EnderecoMac getPorta() {
+        return porta;
     }
-
-    /**
-     * Provisorio
-     * @param gateway 
-     */
-    public void setGateway(String gateway) {
-        this.gateway = new Ip();
-    }
-
 
     @Override
     public boolean getDhcp() {
@@ -97,8 +92,27 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
         this.dhcp = dhcp;
     }
 
-    
-    
-    
+    public String getArp() {
+       StringBuilder arp = new StringBuilder();
+      
+       for(int i = 0; i < arpAdicionados; i++){
+           arp.append("\n"+ tabelaArp[i].getIp() + ": "+ tabelaArp[i].getMac());
+       }
+       
+       return arp.toString();
+    }
+    public void adicionaTabelaArp( Ip ip, EnderecoMac mac ){
+        if(arpAdicionados < CAPACIDADE){
+            TuplaArp a = new TuplaArp(ip, mac);
+            tabelaArp[arpAdicionados] = a;
+            arpAdicionados++; 
+        }
+    }
 
+    public EnderecoMac getMacPorta() {
+        return mac.getMac();
+    }
+    
+    
+    
 }
