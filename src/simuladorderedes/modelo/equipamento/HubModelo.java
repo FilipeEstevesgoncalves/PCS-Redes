@@ -41,4 +41,24 @@ public class HubModelo extends EquipamentoModelo{
             numeroPortas++;
         }
     }
+
+    @Override
+    public boolean temMac(EnderecoMac mac) {
+        for(int i = 0; i < numeroPortas; i++){
+            if(portas[i].toString() == mac.toString() ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Ip getIp() {
+        return null;
+    }
+
+    @Override
+    public boolean TemIpArmazenado(Ip ip) {
+        return false;
+    }
 }

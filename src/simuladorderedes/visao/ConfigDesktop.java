@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import simuladorderedes.controle.EquipamentosControle;
+import static simuladorderedes.controle.EquipamentosControle.adicionaEquipamento;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import static simuladorderedes.controle.EquipamentosControle.botaoSalvarDesktop;
 import simuladorderedes.modelo.EnderecoMac;
@@ -435,7 +436,13 @@ public class ConfigDesktop extends JFrame {
     }//GEN-LAST:event_jButtonTabelaArpActionPerformed
 
     private void jComboBoxEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosActionPerformed
-        
+       String nomeEquipamento  =(String) jComboBoxEquipamentos.getSelectedItem();
+       if(nomeEquipamento != desktop.getNome()){
+           TelaPrincipal.escreveNoLog("\nConectado a "+ nomeEquipamento);
+       }
+        String resposta = adicionaEquipamento(desktop, nomeEquipamento);
+        TelaPrincipal.escreveNoLog("\nMAC: "+resposta);
+       
     }//GEN-LAST:event_jComboBoxEquipamentosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

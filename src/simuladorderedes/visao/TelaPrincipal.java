@@ -373,7 +373,7 @@ public class TelaPrincipal extends JFrame {
         JButton botao = new JButton();
         botao.setIcon(new javax.swing.ImageIcon(CaminhoImagens.getCaminhoRoteador()));
         roteadorInternalFrame.add(botao);
-        textAreaLog.append("\nCriando...\n Roteador "+ roteador.getNome() + "\n ip:"+ roteador.temIp());
+        textAreaLog.append("\nCriando...\n Roteador "+ roteador.getNome() + "\n ip:"+ roteador.getIp());
         
         botao.addActionListener(new ActionListener() {
             @Override

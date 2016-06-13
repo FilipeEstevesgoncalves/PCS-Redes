@@ -3,7 +3,6 @@ package simuladorderedes.modelo.equipamento;
 
 import simuladorderedes.modelo.*;
 import simuladorderedes.modelo.Ip;
-import simuladorderedes.visao.TelaPrincipal;
 
 public class DesktopModelo extends EquipamentoModelo implements IIp {
 
@@ -12,8 +11,8 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     private boolean dhcp = false;
     private EnderecoMac porta;
     private int CAPACIDADE = 10;
-    private   TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE];
-    private TuplaMac mac;
+    private TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE];
+    private TuplaMac tuplaMac;
     
     private int arpAdicionados = 0;
 
@@ -25,7 +24,7 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
 
     }
     public void conectaAparelho(EnderecoMac mac){
-        this.mac = new TuplaMac(mac, 1);
+        this.tuplaMac = new TuplaMac(mac, 1);
     }
 
     public DesktopModelo(String nome) {
@@ -103,16 +102,30 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     }
     public void adicionaTabelaArp( Ip ip, EnderecoMac mac ){
         if(arpAdicionados < CAPACIDADE){
-            TuplaArp a = new TuplaArp(ip, mac);
-            tabelaArp[arpAdicionados] = a;
+            tabelaArp[arpAdicionados] = new TuplaArp(ip, mac);
             arpAdicionados++; 
         }
     }
 
     public EnderecoMac getMacPorta() {
-        return mac.getMac();
+        return tuplaMac.getMac();
     }
-    
-    
-    
+
+    @Override
+    public boolean temMac(EnderecoMac mac) {
+        if(tuplaMac.getMac().toString() == mac.toString()){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean TemIpArmazenado(Ip ip) {
+        for(int i = 0; i < tabelaArp.length; i++ ){
+            if(tabelaArp[i].getIp() == ip ){
+                return true;
+            }
+        }
+        return false;
+    } 
 }

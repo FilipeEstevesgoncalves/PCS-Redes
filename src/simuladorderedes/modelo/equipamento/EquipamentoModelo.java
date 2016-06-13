@@ -41,7 +41,9 @@ public abstract class EquipamentoModelo {
         this.nome = nome;
     }
     public abstract boolean temIp();
-
     public abstract void adicionaMac(EnderecoMac mac);
+    public abstract boolean temMac(EnderecoMac mac);
+    public abstract Ip getIp();
+    public abstract boolean TemIpArmazenado(Ip ip);
     
 }

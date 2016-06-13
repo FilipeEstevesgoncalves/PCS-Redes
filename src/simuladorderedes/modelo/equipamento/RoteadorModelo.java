@@ -11,7 +11,11 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
     private boolean dhcp = false;
     private int porta = 0;
     private int CAPACIDADE_ARP = 10;
-    private   TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE_ARP];
+    private TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE_ARP];
+    private final int NUMERO_TOTAL_PORTAS = 12;
+    private int numeroPortas = 0;
+    private TuplaMac[] tuplasMac = new TuplaMac[NUMERO_TOTAL_PORTAS];
+    
     private int arpAdicionados = 0;
 
     public RoteadorModelo(String nome) {
@@ -64,7 +68,9 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
 
     @Override
     public void adicionaMac(EnderecoMac mac) {
-
+        if(numeroPortas < NUMERO_TOTAL_PORTAS){
+            tuplasMac[numeroPortas] = new TuplaMac(mac, numeroPortas);
+        }
     }
     
     public String getArp() {
@@ -83,5 +89,25 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
             arpAdicionados++; 
         }
     }
+        @Override
+        public boolean temMac(EnderecoMac mac) {
+        for(int i = 0; i < tuplasMac.length; i++){
+            if(tuplasMac[i].getMac().toString() == mac.toString() ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean TemIpArmazenado(Ip ip) {
+        for(int i = 0; i < tabelaArp.length; i++ ){
+            if(tabelaArp[i].getIp() == ip ){
+                return true;
+            }
+        }
+        return false;
+    }
+       
 
 }

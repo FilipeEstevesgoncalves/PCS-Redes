@@ -11,7 +11,7 @@ import simuladorderedes.visao.TelaPrincipal;
 
 public class EquipamentosControle {
        
-    private ArrayList<EquipamentoModelo> equipamentos = new ArrayList<>();
+    private static ArrayList<EquipamentoModelo> equipamentos = new ArrayList<>();
     private static int TAMANHO_TOTAL_EQUIPAMENTOS = 20;
     private static String[] nomes = new String[TAMANHO_TOTAL_EQUIPAMENTOS];
     private int numeroEquipamentosTotal = 0;
@@ -133,7 +133,31 @@ public class EquipamentosControle {
         
     }
     
-    
-    
-    
+    public static String adicionaEquipamento(EquipamentoModelo equipamentoEmissor, String equipamentoString){
+        for (EquipamentoModelo equipamento : equipamentos) {
+            if(equipamento.getNome() == equipamentoString){
+                equipamentoEmissor.adicionaMac(equipamento.getMac());
+                return equipamento.getMac().toString();
+            }
+        }
+        return "Não encontrado";
+                
+    }
+    public static void enviarMensagem(String emissor,String receptor){
+        EquipamentoModelo equipamentoEmissor = null;
+        EquipamentoModelo equipamentoReceptor = null;
+        for (EquipamentoModelo equipamento : equipamentos) {
+            if(equipamento.getNome() == emissor){
+                equipamentoEmissor= equipamento;
+            }else if(equipamento.getNome() == receptor){
+               equipamentoReceptor= equipamento;
+            }
+        }
+        if(equipamentoEmissor.temIp()  && equipamentoReceptor.temIp() ){
+            TelaPrincipal.escreveNoLog("\nEntrou ");
+            
+            
+        }        
+        
+    }
 }

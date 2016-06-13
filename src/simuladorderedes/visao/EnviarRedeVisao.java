@@ -8,6 +8,7 @@ package simuladorderedes.visao;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import simuladorderedes.controle.EquipamentosControle;
+import static simuladorderedes.controle.EquipamentosControle.enviarMensagem;
 import simuladorderedes.modelo.Ip;
 
 /**
@@ -108,6 +109,7 @@ public class EnviarRedeVisao extends JFrame {
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
         String emissor = (String) jComboBoxEquipamentosEmissor.getSelectedItem();
         String receptor = (String) jComboBoxEquipamentosReceptor.getSelectedItem();
+        enviarMensagem(emissor, receptor);
         
         this.dispose();
         
