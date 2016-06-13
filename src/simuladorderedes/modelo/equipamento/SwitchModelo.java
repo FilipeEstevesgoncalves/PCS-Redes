@@ -1,5 +1,6 @@
 package simuladorderedes.modelo.equipamento;
 
+import simuladorderedes.modelo.TuplaMac;
 import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 
@@ -56,4 +57,14 @@ public class SwitchModelo extends EquipamentoModelo {
     public boolean TemIpArmazenado(Ip ip) {
         return false;
     }
+    @Override
+    public void adicionaTabelaArp(Ip ip, EnderecoMac mac) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public EnderecoMac getMacPorta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

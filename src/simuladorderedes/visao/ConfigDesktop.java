@@ -441,7 +441,7 @@ public class ConfigDesktop extends JFrame {
            TelaPrincipal.escreveNoLog("\nConectado a "+ nomeEquipamento);
        }
         String resposta = adicionaEquipamento(desktop, nomeEquipamento);
-        TelaPrincipal.escreveNoLog("\nMAC: "+resposta);
+        TelaPrincipal.escreveNoLog("\nMAC: "+desktop.getMacPorta());
        
     }//GEN-LAST:event_jComboBoxEquipamentosActionPerformed
 

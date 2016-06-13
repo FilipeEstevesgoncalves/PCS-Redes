@@ -1,12 +1,7 @@
-package simuladorderedes.modelo.equipamento;
+package simuladorderedes.modelo;
 
-import simuladorderedes.modelo.EnderecoMac;
 
-/**
- *
- * @author Filipe
- */
-class TuplaMac {
+public class TuplaMac {
     
     private EnderecoMac mac;
     private int porta;

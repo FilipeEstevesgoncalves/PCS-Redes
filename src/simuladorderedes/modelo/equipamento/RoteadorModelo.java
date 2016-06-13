@@ -1,6 +1,7 @@
 package simuladorderedes.modelo.equipamento;
 
 
+import simuladorderedes.modelo.TuplaMac;
 import simuladorderedes.modelo.*;
 
 public class RoteadorModelo extends EquipamentoModelo implements IIp{
@@ -45,8 +46,6 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
     public void setIpPrivado(Ip ip) {
         this.ipPrivado = ip;
     }
-
-    
 
     @Override
     public boolean getDhcp() {
@@ -102,12 +101,16 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
     @Override
     public boolean TemIpArmazenado(Ip ip) {
         for(int i = 0; i < tabelaArp.length; i++ ){
-            if(tabelaArp[i].getIp() == ip ){
+            if(tabelaArp[i].getIp().toString() == ip.toString() ){
                 return true;
             }
         }
         return false;
     }
-       
+
+    @Override
+    public EnderecoMac getMacPorta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

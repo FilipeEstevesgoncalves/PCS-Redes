@@ -1,5 +1,8 @@
 package simuladorderedes.controle;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import simuladorderedes.modelo.*;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
@@ -9,7 +12,7 @@ import simuladorderedes.modelo.equipamento.RoteadorModelo;
 import simuladorderedes.modelo.equipamento.SwitchModelo;
 import simuladorderedes.visao.TelaPrincipal;
 
-public class EquipamentosControle {
+public class EquipamentosControle implements Serializable{
        
     private static ArrayList<EquipamentoModelo> equipamentos = new ArrayList<>();
     private static int TAMANHO_TOTAL_EQUIPAMENTOS = 20;
@@ -134,9 +137,12 @@ public class EquipamentosControle {
     }
     
     public static String adicionaEquipamento(EquipamentoModelo equipamentoEmissor, String equipamentoString){
+        
         for (EquipamentoModelo equipamento : equipamentos) {
             if(equipamento.getNome() == equipamentoString){
                 equipamentoEmissor.adicionaMac(equipamento.getMac());
+                TelaPrincipal.escreveNoLog("sss");
+                        
                 return equipamento.getMac().toString();
             }
         }
@@ -153,11 +159,27 @@ public class EquipamentosControle {
                equipamentoReceptor= equipamento;
             }
         }
-        if(equipamentoEmissor.temIp()  && equipamentoReceptor.temIp() ){
-            TelaPrincipal.escreveNoLog("\nEntrou ");
+        if(saoEquipamentosFinais(equipamentoEmissor, equipamentoReceptor) ){
+            if(equipamentoEmissor.TemIpArmazenado(equipamentoReceptor.getIp())){
+                TelaPrincipal.escreveNoLog("Enviando mensagem ...");
+            }
+            TelaPrincipal.escreveNoLog("\nIp "+ equipamentoReceptor.getIp()+ 
+                    " não encontrado \nFazendo broadcast,\nQuem tem IP "+ equipamentoReceptor.getIp()+"?");
+            
+            System.out.println(equipamentoEmissor.temMac(equipamentoReceptor.getMac()));
             
             
+            if(equipamentoEmissor.temMac(equipamentoReceptor.getMac())){
+                equipamentoEmissor.adicionaTabelaArp(equipamentoReceptor.getIp(), equipamentoReceptor.getMac());
+                TelaPrincipal.escreveNoLog("\nEquipamento "+ equipamentoReceptor.getTipo()+": "+equipamentoReceptor.getIp() +
+                        ","+ equipamentoReceptor.getMac()+ "adicionado a tabela arp");
+            }
+            TelaPrincipal.escreveNoLog("\nfim");
         }        
         
+    }
+
+    private static boolean saoEquipamentosFinais(EquipamentoModelo equipamentoEmissor, EquipamentoModelo equipamentoReceptor) {
+        return equipamentoEmissor.temIp()  && equipamentoReceptor.temIp();
     }
 }

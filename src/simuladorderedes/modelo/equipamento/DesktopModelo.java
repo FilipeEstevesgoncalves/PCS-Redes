@@ -1,18 +1,20 @@
 package simuladorderedes.modelo.equipamento;
 
-
 import simuladorderedes.modelo.*;
 import simuladorderedes.modelo.Ip;
+import simuladorderedes.visao.TelaPrincipal;
+
 
 public class DesktopModelo extends EquipamentoModelo implements IIp {
 
     private Ip ip;
     private Ip gateway;
     private boolean dhcp = false;
-    private EnderecoMac porta;
+//    private EnderecoMac porta;
     private int CAPACIDADE = 10;
     private TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE];
-    private TuplaMac tuplaMac;
+    private int numerosNaArp = 0;
+    private TuplaMac tuplaMacPorta;
     
     private int arpAdicionados = 0;
 
@@ -20,11 +22,9 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     public DesktopModelo(String nome, Ip ip) {
         super(EnumTipoEquipamento.DESKTOP, nome);
         this.ip = ip;
-        
-
     }
     public void conectaAparelho(EnderecoMac mac){
-        this.tuplaMac = new TuplaMac(mac, 1);
+        this.tuplaMacPorta = new TuplaMac(mac, 1);
     }
 
     public DesktopModelo(String nome) {
@@ -74,11 +74,8 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
 
     @Override
     public void adicionaMac(EnderecoMac mac) {
-        porta = mac;
-    }
-
-    public EnderecoMac getPorta() {
-        return porta;
+        tuplaMacPorta = new TuplaMac(mac, 1);
+        TelaPrincipal.escreveNoLog("\nEndereço mac adicionado "+mac);
     }
 
     @Override
@@ -107,22 +104,27 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
         }
     }
 
+    @Override
     public EnderecoMac getMacPorta() {
-        return tuplaMac.getMac();
+        return tuplaMacPorta.getMac();
     }
 
     @Override
     public boolean temMac(EnderecoMac mac) {
-        if(tuplaMac.getMac().toString() == mac.toString()){
+        if(tuplaMacPorta.getMac().equals(mac)){
             return true;
         }
         return false;
     }
 
     @Override
-    public boolean TemIpArmazenado(Ip ip) {
+    public boolean TemIpArmazenado(Ip ip) {    
+        if(numerosNaArp  == 0){
+    		return false;
+    	}
         for(int i = 0; i < tabelaArp.length; i++ ){
-            if(tabelaArp[i].getIp() == ip ){
+            
+            if(tabelaArp[i].getIp().toString() == ip.toString() ){
                 return true;
             }
         }
