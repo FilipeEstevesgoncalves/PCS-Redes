@@ -9,10 +9,10 @@ import javax.accessibility.AccessibleContext;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import simuladorderedes.controle.EquipamentosControle;
-import static simuladorderedes.controle.EquipamentosControle.adicionaEquipamento;
+import simuladorderedes.modelo.EquipamentosModelo;
+import static simuladorderedes.modelo.EquipamentosModelo.adicionaEquipamento;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
-import static simuladorderedes.controle.EquipamentosControle.botaoSalvarDesktop;
+import static simuladorderedes.modelo.EquipamentosModelo.botaoSalvarDesktop;
 import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 
@@ -215,7 +215,7 @@ public class ConfigDesktop extends JFrame {
 
         jLabel12.setText("Conectar");
 
-        jComboBoxEquipamentos.setModel(new javax.swing.DefaultComboBoxModel<>(EquipamentosControle.getNomes()));
+        jComboBoxEquipamentos.setModel(new javax.swing.DefaultComboBoxModel<>(EquipamentosModelo.getNomes()));
         jComboBoxEquipamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxEquipamentosActionPerformed(evt);
@@ -376,7 +376,7 @@ public class ConfigDesktop extends JFrame {
         Ip ip = new Ip(jTextFieldIpDesktop1.getText(),jTextFieldIpDesktop2.getText(),
                 jTextFieldIpDesktop3.getText(),jTextFieldIpDesktop4.getText());
         
-        if(EquipamentosControle.botaoSalvarDesktop(desktop, nome, ip)){
+        if(EquipamentosModelo.botaoSalvarDesktop(desktop, nome, ip)){
             TelaPrincipal.escreveNoLog("\nAlterações salvas no "+ desktop.getTipo() +": "+desktop.getNome());
         }
 
@@ -431,8 +431,7 @@ public class ConfigDesktop extends JFrame {
 
     private void jButtonTabelaArpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTabelaArpActionPerformed
 
-        TelaPrincipal.escreveNoLog("\n"+desktop.getTipo()+": "+ desktop.getNome());
-        TelaPrincipal.escreveNoLog(desktop.getArp());
+        TelaPrincipal.escreveNoLog("\n"+desktop.getTipo()+": "+ desktop.getNome()+"\nTabelaArp"+desktop.getArp());
     }//GEN-LAST:event_jButtonTabelaArpActionPerformed
 
     private void jComboBoxEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEquipamentosActionPerformed

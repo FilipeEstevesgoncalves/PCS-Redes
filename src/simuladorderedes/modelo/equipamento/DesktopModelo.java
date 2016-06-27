@@ -10,7 +10,6 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     private Ip ip;
     private Ip gateway;
     private boolean dhcp = false;
-//    private EnderecoMac porta;
     private int CAPACIDADE = 10;
     private TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE];
     private int numerosNaArp = 0;
@@ -22,6 +21,7 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     public DesktopModelo(String nome, Ip ip) {
         super(EnumTipoEquipamento.DESKTOP, nome);
         this.ip = ip;
+        this.tuplaMacPorta = new TuplaMac(new EnderecoMac(0), 1);
     }
     public void conectaAparelho(EnderecoMac mac){
         this.tuplaMacPorta = new TuplaMac(mac, 1);
@@ -75,7 +75,6 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     @Override
     public void adicionaMac(EnderecoMac mac) {
         tuplaMacPorta = new TuplaMac(mac, 1);
-        TelaPrincipal.escreveNoLog("\nEndereço mac adicionado "+mac);
     }
 
     @Override
@@ -92,7 +91,7 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
        StringBuilder arp = new StringBuilder();
       
        for(int i = 0; i < arpAdicionados; i++){
-           arp.append("\n"+ tabelaArp[i].getIp() + ": "+ tabelaArp[i].getMac());
+           arp.append("\nIP: "+ tabelaArp[i].getIp() + "MAC: "+ tabelaArp[i].getMac());
        }
        
        return arp.toString();
@@ -111,20 +110,13 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
 
     @Override
     public boolean temMac(EnderecoMac mac) {
-        if(tuplaMacPorta.getMac().equals(mac)){
-            return true;
-        }
-        return false;
+            return tuplaMacPorta.getMac().equals(mac);
     }
 
     @Override
     public boolean TemIpArmazenado(Ip ip) {    
-        if(numerosNaArp  == 0){
-    		return false;
-    	}
-        for(int i = 0; i < tabelaArp.length; i++ ){
-            
-            if(tabelaArp[i].getIp().toString() == ip.toString() ){
+        for(int i = 0; i < arpAdicionados; i++ ){
+            if(tabelaArp[i].getIp().equals(ip)){
                 return true;
             }
         }

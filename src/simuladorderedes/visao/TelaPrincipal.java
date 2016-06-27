@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.*;
 import java.util.ArrayList;
-import simuladorderedes.controle.EquipamentosControle;
+import simuladorderedes.modelo.EquipamentosModelo;
 import simuladorderedes.controle.LogControle;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import simuladorderedes.modelo.equipamento.HubModelo;
@@ -25,7 +25,7 @@ public class TelaPrincipal extends JFrame {
     private ArrayList<JInternalFrame> desktopsInternalFrame;
     private ArrayList<JInternalFrame> hubsInternalFrame;
     private ArrayList<JInternalFrame> switchsInternalFrame;
-    private EquipamentosControle controle = new EquipamentosControle();
+    private EquipamentosModelo controle = new EquipamentosModelo();
     
     public TelaPrincipal() {
         

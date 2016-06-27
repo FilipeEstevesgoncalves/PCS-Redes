@@ -20,6 +20,18 @@ public class EnderecoMac {
         return randomNum;
     }
 
+    public EnderecoMac(int i) {
+        mac = new StringBuilder("0:0:0:0");
+    }
+
+    @Override
+    public String toString() {
+        return mac.toString();
+    }
+
+    
+    
+    
 
     /**
      * Transforma a StringBuilder mac em uma String

@@ -46,7 +46,6 @@ public abstract class EquipamentoModelo {
     public abstract Ip getIp();
     public abstract boolean TemIpArmazenado(Ip ip);
     public abstract void adicionaTabelaArp( Ip ip, EnderecoMac mac );
-
     public abstract EnderecoMac getMacPorta();
 
         

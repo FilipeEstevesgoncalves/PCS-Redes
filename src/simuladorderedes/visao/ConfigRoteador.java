@@ -2,7 +2,7 @@ package simuladorderedes.visao;
 
 import java.awt.Desktop;
 import javax.swing.JTextArea;
-import simuladorderedes.controle.EquipamentosControle;
+import simuladorderedes.modelo.EquipamentosModelo;
 import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
@@ -261,7 +261,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
         Ip ip = new Ip(jTextFieldIpRoteador1.getText(),jTextFieldIpRoteador2.getText(),
                 jTextFieldIpRoteador3.getText(),jTextFieldIpRoteador4.getText());
         
-        if(EquipamentosControle.botaoSalvarRoteador(roteador, nome, ip)){
+        if(EquipamentosModelo.botaoSalvarRoteador(roteador, nome, ip)){
             TelaPrincipal.escreveNoLog("\nAlterações salvas no "+ roteador.getTipo() +": "+roteador.getNome());
         }
 
