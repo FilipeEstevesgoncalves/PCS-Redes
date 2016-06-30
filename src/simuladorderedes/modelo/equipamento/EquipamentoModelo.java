@@ -1,22 +1,27 @@
 package simuladorderedes.modelo.equipamento;
 
+import java.io.Serializable;
 import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 /**
  * Classe abstrata
  * @author Filipe
  */
-public abstract class EquipamentoModelo {
+public abstract class EquipamentoModelo implements Serializable{
 
     private EnumTipoEquipamento tipo;
     private String nome;
-    private final EnderecoMac mac;
+    private EnderecoMac mac;
     private int portaEthernet;
     private boolean ligado;
+
+    public EquipamentoModelo() {
+    }
+    
     
 
     public EquipamentoModelo(EnumTipoEquipamento tipo, String nome) {
-        this.mac = new EnderecoMac();
+        this.mac = new EnderecoMac(1);
         this.tipo = tipo;
         this.nome = nome;
         this.ligado = true;
@@ -48,6 +53,33 @@ public abstract class EquipamentoModelo {
     public abstract void adicionaTabelaArp( Ip ip, EnderecoMac mac );
     public abstract EnderecoMac getMacPorta();
 
+    public boolean isLigado() {
+        return ligado;
+    }
+
+    public void setLigado(boolean ligado) {
+        this.ligado = ligado;
+    }
+
+    public int getPortaEthernet() {
+        return portaEthernet;
+    }
+
+    public void setPortaEthernet(int portaEthernet) {
+        this.portaEthernet = portaEthernet;
+    }
+
+    public void setMac(EnderecoMac mac) {
+        this.mac = mac;
+    }
+
+    public void setTipo(EnumTipoEquipamento tipo) {
+        this.tipo = tipo;
+    }
+
+    public EnumTipoEquipamento getEnumTipoEquipamento(){
+        return tipo;
+    }
         
     
 }

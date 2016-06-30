@@ -8,11 +8,12 @@ package simuladorderedes.visao;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JTextArea;
-import simuladorderedes.modelo.EquipamentosModelo;
-import static simuladorderedes.modelo.EquipamentosModelo.adicionaEquipamento;
+import simuladorderedes.modelo.RedeModelo;
+import static simuladorderedes.modelo.RedeModelo.adicionaEquipamento;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
-import static simuladorderedes.modelo.EquipamentosModelo.botaoSalvarDesktop;
+import static simuladorderedes.modelo.RedeModelo.botaoSalvarDesktop;
 import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 
@@ -27,13 +28,15 @@ public class ConfigDesktop extends JFrame {
      */
     private DesktopModelo desktop;
     private JTextArea log;
+     JInternalFrame desktopInternalFrame;
   
-    public ConfigDesktop(DesktopModelo d, JTextArea Textlog, int numeroDeEquipamentos) {
+    public ConfigDesktop(DesktopModelo d, JTextArea Textlog, JInternalFrame desktopInternalFrame) {
  
         log = Textlog;
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         this.desktop = d;
+        this.desktopInternalFrame =desktopInternalFrame;
         
         
         jTextFieldNomeDesktop.setText(desktop.getNome());
@@ -47,6 +50,7 @@ public class ConfigDesktop extends JFrame {
         
         InicialBotaoGrupo();
     }
+
 
     private void InicialBotaoGrupo() {
         if(desktop.getDhcp()){
@@ -215,7 +219,7 @@ public class ConfigDesktop extends JFrame {
 
         jLabel12.setText("Conectar");
 
-        jComboBoxEquipamentos.setModel(new javax.swing.DefaultComboBoxModel<>(EquipamentosModelo.getNomes()));
+        jComboBoxEquipamentos.setModel(new javax.swing.DefaultComboBoxModel<>(RedeModelo.getNomes()));
         jComboBoxEquipamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxEquipamentosActionPerformed(evt);
@@ -372,11 +376,11 @@ public class ConfigDesktop extends JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         
         String nome = jTextFieldNomeDesktop.getText();
-        
+        desktopInternalFrame.setTitle(nome);
         Ip ip = new Ip(jTextFieldIpDesktop1.getText(),jTextFieldIpDesktop2.getText(),
                 jTextFieldIpDesktop3.getText(),jTextFieldIpDesktop4.getText());
         
-        if(EquipamentosModelo.botaoSalvarDesktop(desktop, nome, ip)){
+        if(RedeModelo.botaoSalvarDesktop(desktop, nome, ip)){
             TelaPrincipal.escreveNoLog("\nAlterações salvas no "+ desktop.getTipo() +": "+desktop.getNome());
         }
 

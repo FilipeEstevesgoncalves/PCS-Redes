@@ -1,6 +1,8 @@
 package simuladorderedes.modelo;
 
-public class Ip {
+import java.io.Serializable;
+
+public class Ip implements Serializable{
 
     private StringBuilder ip;
     private int[] octetos = new int[4];
@@ -9,7 +11,8 @@ public class Ip {
      * Construtor Transforma 4 numeros entre 255 e 0 em hexadecimal e passa para
      * uma StringBuilder
      */
-    public Ip() {
+    
+    public Ip(int a) {
         ip = new StringBuilder();
         for (int i = 0; i < 4; i++) {
             octetos[i] = randInt(0, 255);
@@ -18,6 +21,29 @@ public class Ip {
         }
         ip.deleteCharAt(ip.length() - 1);
     }
+
+    public Ip() {
+    }
+    
+    
+
+    public StringBuilder getIp() {
+        return ip;
+    }
+
+    public void setIp(StringBuilder ip) {
+        this.ip = ip;
+    }
+
+    public int[] getOctetos() {
+        return octetos;
+    }
+
+    public void setOctetos(int[] octetos) {
+        this.octetos = octetos;
+    }
+    
+    
 
     public Ip(int octeto1, int octeto2, int octeto3, int octeto4) {
         this.ip = new StringBuilder();
@@ -62,6 +88,15 @@ public class Ip {
 
     @Override
     public String toString() {
+        if(ip == null){
+            ip = new StringBuilder();
+            for (int i = 0; i < 4; i++) {
+                octetos[i] = randInt(0, 255);
+                this.ip.append(octetos[i]);
+                this.ip.append(".");
+            }
+            ip.deleteCharAt(ip.length() - 1);
+        }
         return ip.toString();
     }
 

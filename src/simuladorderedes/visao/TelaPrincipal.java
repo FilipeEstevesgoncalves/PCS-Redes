@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.*;
 import java.util.ArrayList;
-import simuladorderedes.modelo.EquipamentosModelo;
+import simuladorderedes.modelo.RedeModelo;
 import simuladorderedes.controle.LogControle;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import simuladorderedes.modelo.equipamento.HubModelo;
@@ -25,7 +25,7 @@ public class TelaPrincipal extends JFrame {
     private ArrayList<JInternalFrame> desktopsInternalFrame;
     private ArrayList<JInternalFrame> hubsInternalFrame;
     private ArrayList<JInternalFrame> switchsInternalFrame;
-    private EquipamentosModelo controle = new EquipamentosModelo();
+    private RedeModelo controle = new RedeModelo();
     
     public TelaPrincipal() {
         
@@ -178,7 +178,7 @@ public class TelaPrincipal extends JFrame {
                     .addComponent(botaoSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoHub, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         LogInternalFrame.setBorder(null);
@@ -196,15 +196,15 @@ public class TelaPrincipal extends JFrame {
         LogInternalFrame.getContentPane().setLayout(LogInternalFrameLayout);
         LogInternalFrameLayout.setHorizontalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogInternalFrameLayout.createSequentialGroup()
+            .addGroup(LogInternalFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
         );
         LogInternalFrameLayout.setVerticalGroup(
             LogInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogInternalFrameLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDesktopPaneLayout = new javax.swing.GroupLayout(jDesktopPane);
@@ -320,9 +320,8 @@ public class TelaPrincipal extends JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(equipamentosInternalFrame)
                     .addComponent(jDesktopPane))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LogInternalFrame)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(LogInternalFrame))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +353,7 @@ public class TelaPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                ConfigDesktop configDesktop = new ConfigDesktop(desktop, textAreaLog, numeroDeEquipamentos);
+                ConfigDesktop configDesktop = new ConfigDesktop(desktop, textAreaLog, desktopInternalFrame);
                 configDesktop.setVisible(true);
             }
         });
@@ -379,8 +378,7 @@ public class TelaPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ConfigRoteador configRoteador = new ConfigRoteador(roteador, textAreaLog);
-                
+                ConfigRoteador configRoteador = new ConfigRoteador(roteador, textAreaLog,roteadorInternalFrame ); 
                 configRoteador.setVisible(true);
             }
         });
@@ -406,8 +404,8 @@ public class TelaPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                TabelaComutacaoVisao tabela = new TabelaComutacaoVisao();
-                tabela.setVisible(true);
+                ConfigSwitch configSwitch = new ConfigSwitch(sw);
+                configSwitch.setVisible(true);
             }
         });
         
@@ -442,7 +440,8 @@ public class TelaPrincipal extends JFrame {
     }//GEN-LAST:event_jMenuAbrirActionPerformed
 
     private void jMenuSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalvarActionPerformed
-        // TODO add your handling code here:
+        GravarXML xml = new GravarXML(controle); 
+        xml.setVisible(true);
     }//GEN-LAST:event_jMenuSalvarActionPerformed
 
     private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed

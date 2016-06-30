@@ -1,22 +1,51 @@
 package simuladorderedes.modelo.equipamento;
 
-import simuladorderedes.modelo.TuplaMac;
+
+import java.util.HashSet;
 import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
+import simuladorderedes.modelo.RedeModelo;
+import simuladorderedes.visao.TelaPrincipal;
 
 /**
  * Transparente(hosts e roteadores não sabem da sua presença) Plug and Play
  *
- * @author Filipe
  */
 public class SwitchModelo extends EquipamentoModelo {
 
     private final int NUMERO_TOTAL_PORTAS = 12;
     private int numeroPortas = 0;
-    private TuplaMac[] tuplaMac = new TuplaMac[NUMERO_TOTAL_PORTAS];
+    private HashSet<EnderecoMac> Macs = new HashSet<>(NUMERO_TOTAL_PORTAS);
 
+    public SwitchModelo() {
+    }
+
+    public int getNumeroPortas() {
+        return numeroPortas;
+    }
+
+    public void setNumeroPortas(int numeroPortas) {
+        this.numeroPortas = numeroPortas;
+    }
+
+    public HashSet<EnderecoMac> getMacs() {
+        return Macs;
+    }
+
+    public void setMacs(HashSet<EnderecoMac> Macs) {
+        this.Macs = Macs;
+    }
+    
+    
+    
     public SwitchModelo(String nome) {
         super(EnumTipoEquipamento.SWITCH, nome);
+    }
+    
+    public void imprimeTabelaComutacao(){
+        for(EnderecoMac Mac : Macs) {
+            TelaPrincipal.escreveNoLog("\n"+ Mac.toString());
+        }
     }
 
     @Override
@@ -31,21 +60,17 @@ public class SwitchModelo extends EquipamentoModelo {
 
     @Override
     public void adicionaMac(EnderecoMac mac) {
-        if (numeroPortas < NUMERO_TOTAL_PORTAS) {
-            tuplaMac[numeroPortas] = new TuplaMac(mac, numeroPortas);
-            numeroPortas++;
-        }
+        Macs.add(mac);
 
+    }
+    @Override
+    public  void adicionaTabelaArp( Ip ip, EnderecoMac mac ){
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public boolean temMac(EnderecoMac mac) {
-        for (int i = 0; i < numeroPortas; i++) {
-            if (tuplaMac[i].getMac().toString() == mac.toString()) {
-                return true;
-            }
-        }
-        return false;
+        return Macs.contains(mac);
     }
 
     @Override
@@ -57,14 +82,31 @@ public class SwitchModelo extends EquipamentoModelo {
     public boolean TemIpArmazenado(Ip ip) {
         return false;
     }
-    @Override
-    public void adicionaTabelaArp(Ip ip, EnderecoMac mac) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    public void removeMac(String nome){
 
+        EquipamentoModelo equipamento =  RedeModelo.getEquipamentoUnico(nome);
+        Macs.remove(equipamento.getMac());
+
+    }
+  
+  
+
+    
     @Override
     public EnderecoMac getMacPorta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void adicionaMac(String nome) {
+       EquipamentoModelo equipamento =  RedeModelo.getEquipamentoUnico(nome);
+       Macs.add(equipamento.getMac());
+    }
+
+    public int getNUMERO_TOTAL_PORTAS() {
+        return NUMERO_TOTAL_PORTAS;
+    }
+    
+    
 
 }

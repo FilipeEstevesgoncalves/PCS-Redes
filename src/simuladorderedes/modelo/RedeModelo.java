@@ -1,10 +1,8 @@
 package simuladorderedes.modelo;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import simuladorderedes.modelo.*;
 import simuladorderedes.modelo.equipamento.DesktopModelo;
 import simuladorderedes.modelo.equipamento.EquipamentoModelo;
 import simuladorderedes.modelo.equipamento.HubModelo;
@@ -12,17 +10,70 @@ import simuladorderedes.modelo.equipamento.RoteadorModelo;
 import simuladorderedes.modelo.equipamento.SwitchModelo;
 import simuladorderedes.visao.TelaPrincipal;
 
-public class EquipamentosModelo {
+public class RedeModelo implements Serializable{
 
     private static ArrayList<EquipamentoModelo> equipamentos = new ArrayList<>();
     private static int TAMANHO_TOTAL_EQUIPAMENTOS = 20;
     private static String[] nomes = new String[TAMANHO_TOTAL_EQUIPAMENTOS];
-    private int numeroEquipamentosTotal = 0;
+    private static int numeroEquipamentosTotal = 0;
     private static int numeroDesktops = 0;
     private static int numeroHubs = 0;
     private static int numeroRoteadores = 0;
     private static int numeroSwithcs = 0;
 
+    public RedeModelo() {
+    }
+
+    public static int getTAMANHO_TOTAL_EQUIPAMENTOS() {
+        return TAMANHO_TOTAL_EQUIPAMENTOS;
+    }
+
+    public static int getNumeroDesktops() {
+        return numeroDesktops;
+    }
+
+    public static int getNumeroHubs() {
+        return numeroHubs;
+    }
+
+    public static int getNumeroRoteadores() {
+        return numeroRoteadores;
+    }
+
+    public static int getNumeroSwithcs() {
+        return numeroSwithcs;
+    }
+    
+    
+    public static void setEquipamentos(ArrayList<EquipamentoModelo> equipamentos) {
+        RedeModelo.equipamentos = equipamentos;
+    }
+
+    public static void setTAMANHO_TOTAL_EQUIPAMENTOS(int TAMANHO_TOTAL_EQUIPAMENTOS) {
+        RedeModelo.TAMANHO_TOTAL_EQUIPAMENTOS = TAMANHO_TOTAL_EQUIPAMENTOS;
+    }
+
+    public static void setNumeroEquipamentosTotal(int numeroEquipamentosTotal) {
+        RedeModelo.numeroEquipamentosTotal = numeroEquipamentosTotal;
+    }
+
+    public static void setNumeroDesktops(int numeroDesktops) {
+        RedeModelo.numeroDesktops = numeroDesktops;
+    }
+
+    public static void setNumeroHubs(int numeroHubs) {
+        RedeModelo.numeroHubs = numeroHubs;
+    }
+
+    public static void setNumeroRoteadores(int numeroRoteadores) {
+        RedeModelo.numeroRoteadores = numeroRoteadores;
+    }
+
+    public static void setNumeroSwithcs(int numeroSwithcs) {
+        RedeModelo.numeroSwithcs = numeroSwithcs;
+    }
+
+    
     public DesktopModelo criarDesktop() {
         StringBuilder sb = new StringBuilder("Desktop ");
         numeroDesktops++;
@@ -110,17 +161,13 @@ public class EquipamentosModelo {
         }
     }
 
-    public String[] getEquipamentos() {
-        String[] copia = new String[equipamentos.size()];
-        for (int i = 0; i < equipamentos.size(); i++) {
-            copia[i] = equipamentos.get(i).getNome();
-        }
-
-        return copia;
+    public static ArrayList<EquipamentoModelo> getEquipamentos() {
+        return equipamentos;
     }
+    
 
     public static void setNomes(String[] nomes) {
-        EquipamentosModelo.nomes = nomes;
+        RedeModelo.nomes = nomes;
     }
 
     public static String[] getNomes() {
@@ -162,14 +209,18 @@ public class EquipamentosModelo {
         }
         if (saoEquipamentosFinais(equipamentoEmissor, equipamentoReceptor)) {
             if (equipamentoEmissor.TemIpArmazenado(equipamentoReceptor.getIp())) {
+                
                 TelaPrincipal.escreveNoLog("\nMensagem enviada");
             } else if (equipamentoEmissor.temMac(equipamentoReceptor.getMac())) {
+                
                 if (equipamentoEmissor.TemIpArmazenado(equipamentoReceptor.getIp())) {
+                    
                     TelaPrincipal.escreveNoLog("\nMensagem enviada");
                 } else {
                     TelaPrincipal.escreveNoLog("\nIp " + equipamentoReceptor.getIp()
                             + " não encontrado \nFazendo broadcast\nQuem tem IP " + equipamentoReceptor.getIp() + "?");
                     equipamentoEmissor.adicionaTabelaArp(equipamentoReceptor.getIp(), equipamentoReceptor.getMac());
+                    equipamentoReceptor.adicionaTabelaArp(equipamentoEmissor.getIp(), equipamentoEmissor.getMac());
                     TelaPrincipal.escreveNoLog("\nEquipamento " + equipamentoReceptor.getTipo() + "\nIp: " + equipamentoReceptor.getIp()
                             + "\n mac: " + equipamentoReceptor.getMac() + "\nadicionado a tabela arp de " + equipamentoEmissor.getNome());
                     TelaPrincipal.escreveNoLog("\nMensagem enviada");
@@ -184,4 +235,18 @@ public class EquipamentosModelo {
     private static boolean saoEquipamentosFinais(EquipamentoModelo equipamentoEmissor, EquipamentoModelo equipamentoReceptor) {
         return equipamentoEmissor.temIp() && equipamentoReceptor.temIp();
     }
+
+    public static int getNumeroEquipamentosTotal() {
+        return numeroEquipamentosTotal;
+    }
+    public static EquipamentoModelo getEquipamentoUnico(String nome){
+        for (EquipamentoModelo equipamento : equipamentos) {
+            if (equipamento.getNome() == nome) {
+                return equipamento;
+            }
+        }
+        return null;
+    }   
+    
+    
 }

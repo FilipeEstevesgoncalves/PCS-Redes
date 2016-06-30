@@ -1,11 +1,11 @@
 package simuladorderedes.modelo.equipamento;
 
+import java.io.Serializable;
 import simuladorderedes.modelo.*;
 import simuladorderedes.modelo.Ip;
-import simuladorderedes.visao.TelaPrincipal;
 
 
-public class DesktopModelo extends EquipamentoModelo implements IIp {
+public class DesktopModelo extends EquipamentoModelo implements IIp, Serializable {
 
     private Ip ip;
     private Ip gateway;
@@ -14,9 +14,61 @@ public class DesktopModelo extends EquipamentoModelo implements IIp {
     private TuplaArp[] tabelaArp = new TuplaArp[CAPACIDADE];
     private int numerosNaArp = 0;
     private TuplaMac tuplaMacPorta;
-    
     private int arpAdicionados = 0;
 
+    public DesktopModelo() {
+    }
+
+    
+    public Ip getGateway() {
+        return gateway;
+    }
+
+    public void setGateway(Ip gateway) {
+        this.gateway = gateway;
+    }
+
+    public int getCAPACIDADE() {
+        return CAPACIDADE;
+    }
+
+    public void setCAPACIDADE(int CAPACIDADE) {
+        this.CAPACIDADE = CAPACIDADE;
+    }
+
+    public TuplaArp[] getTabelaArp() {
+        return tabelaArp;
+    }
+
+    public void setTabelaArp(TuplaArp[] tabelaArp) {
+        this.tabelaArp = tabelaArp;
+    }
+
+    public int getNumerosNaArp() {
+        return numerosNaArp;
+    }
+
+    public void setNumerosNaArp(int numerosNaArp) {
+        this.numerosNaArp = numerosNaArp;
+    }
+
+    public TuplaMac getTuplaMacPorta() {
+        return tuplaMacPorta;
+    }
+
+    public void setTuplaMacPorta(TuplaMac tuplaMacPorta) {
+        this.tuplaMacPorta = tuplaMacPorta;
+    }
+
+    public int getArpAdicionados() {
+        return arpAdicionados;
+    }
+
+    public void setArpAdicionados(int arpAdicionados) {
+        this.arpAdicionados = arpAdicionados;
+    }
+
+    
 
     public DesktopModelo(String nome, Ip ip) {
         super(EnumTipoEquipamento.DESKTOP, nome);

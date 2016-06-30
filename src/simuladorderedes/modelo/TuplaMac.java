@@ -1,7 +1,9 @@
 package simuladorderedes.modelo;
 
+import java.io.Serializable;
 
-public class TuplaMac {
+
+public class TuplaMac implements Serializable{
     
     private EnderecoMac mac;
     private int porta;
@@ -20,10 +22,20 @@ public class TuplaMac {
         return mac;
     }
 
+    public TuplaMac() {
+    }
+
     public int getPorta() {
         return porta;
     }
-    
+
+    public void setPorta(int porta) {
+        this.porta = porta;
+    }
+
+    public void setMac(EnderecoMac mac) {
+        this.mac = mac;
+    }
     
     
     

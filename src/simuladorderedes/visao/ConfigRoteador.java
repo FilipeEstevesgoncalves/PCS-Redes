@@ -1,8 +1,9 @@
 package simuladorderedes.visao;
 
 import java.awt.Desktop;
+import javax.swing.JInternalFrame;
 import javax.swing.JTextArea;
-import simuladorderedes.modelo.EquipamentosModelo;
+import simuladorderedes.modelo.RedeModelo;
 import simuladorderedes.modelo.EnderecoMac;
 import simuladorderedes.modelo.Ip;
 import simuladorderedes.modelo.equipamento.RoteadorModelo;
@@ -14,10 +15,12 @@ public class ConfigRoteador extends javax.swing.JFrame {
      */
     private RoteadorModelo roteador;
     private JTextArea log;
-    public ConfigRoteador(RoteadorModelo r, JTextArea textLog) {
+    JInternalFrame roteadorInternalFrame;
+    public ConfigRoteador(RoteadorModelo r, JTextArea textLog, JInternalFrame roteadorInternalFrame) {
         log = textLog;
         this.roteador = r;
         initComponents();
+        this.roteadorInternalFrame = roteadorInternalFrame;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
         jTextFieldNome.setText(roteador.getNome());
@@ -61,8 +64,6 @@ public class ConfigRoteador extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldGateway = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextFieldServidorDns = new javax.swing.JTextField();
         jButtonTabelaArp = new javax.swing.JButton();
         jTextFieldIpRoteador1 = new javax.swing.JTextField();
         jTextFieldIpRoteador3 = new javax.swing.JTextField();
@@ -107,9 +108,6 @@ public class ConfigRoteador extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Gateway");
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("Mascara de rede");
 
         jButtonTabelaArp.setText("Mostrar tabela arp");
         jButtonTabelaArp.addActionListener(new java.awt.event.ActionListener() {
@@ -182,25 +180,21 @@ public class ConfigRoteador extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldNome))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jRadioButtonDhcp)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jRadioButtonEstatico))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jTextFieldGateway, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldServidorDns, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(145, 145, 145)
-                                .addComponent(jButtonSalvar)))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(139, 139, 139)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jRadioButtonDhcp)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jRadioButtonEstatico))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(41, 41, 41)
+                                    .addComponent(jTextFieldGateway, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(305, 305, 305)
+                            .addComponent(jButtonSalvar))))
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -210,7 +204,7 @@ public class ConfigRoteador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonTabelaArp))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -237,19 +231,11 @@ public class ConfigRoteador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jLabel5))
-                            .addComponent(jTextFieldGateway, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(9, 9, 9)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldServidorDns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel5))
+                    .addComponent(jTextFieldGateway, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -258,10 +244,11 @@ public class ConfigRoteador extends javax.swing.JFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         String nome = jTextFieldNome.getText();
         
+        roteadorInternalFrame.setTitle(nome);
         Ip ip = new Ip(jTextFieldIpRoteador1.getText(),jTextFieldIpRoteador2.getText(),
                 jTextFieldIpRoteador3.getText(),jTextFieldIpRoteador4.getText());
         
-        if(EquipamentosModelo.botaoSalvarRoteador(roteador, nome, ip)){
+        if(RedeModelo.botaoSalvarRoteador(roteador, nome, ip)){
             TelaPrincipal.escreveNoLog("\nAlterações salvas no "+ roteador.getTipo() +": "+roteador.getNome());
         }
 
@@ -317,7 +304,6 @@ public class ConfigRoteador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -329,6 +315,5 @@ public class ConfigRoteador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIpRoteador3;
     private javax.swing.JTextField jTextFieldIpRoteador4;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldServidorDns;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,10 +1,11 @@
 package simuladorderedes.modelo.equipamento;
 
 
+import java.io.Serializable;
 import simuladorderedes.modelo.TuplaMac;
 import simuladorderedes.modelo.*;
 
-public class RoteadorModelo extends EquipamentoModelo implements IIp{
+public class RoteadorModelo extends EquipamentoModelo implements IIp, Serializable{
 
     private Ip ipPrivado;
     private Ip[] interfaces;
@@ -19,6 +20,74 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
     
     private int arpAdicionados = 0;
 
+    public RoteadorModelo() {
+    }
+
+    public Ip[] getInterfaces() {
+        return interfaces;
+    }
+
+    public void setInterfaces(Ip[] interfaces) {
+        this.interfaces = interfaces;
+    }
+
+    public int getMarcaraDeRede() {
+        return marcaraDeRede;
+    }
+
+    public void setMarcaraDeRede(int marcaraDeRede) {
+        this.marcaraDeRede = marcaraDeRede;
+    }
+
+    public int getPorta() {
+        return porta;
+    }
+
+    public void setPorta(int porta) {
+        this.porta = porta;
+    }
+
+    public int getCAPACIDADE_ARP() {
+        return CAPACIDADE_ARP;
+    }
+
+    public void setCAPACIDADE_ARP(int CAPACIDADE_ARP) {
+        this.CAPACIDADE_ARP = CAPACIDADE_ARP;
+    }
+
+    public TuplaArp[] getTabelaArp() {
+        return tabelaArp;
+    }
+
+    public void setTabelaArp(TuplaArp[] tabelaArp) {
+        this.tabelaArp = tabelaArp;
+    }
+
+    public int getNumeroPortas() {
+        return numeroPortas;
+    }
+
+    public void setNumeroPortas(int numeroPortas) {
+        this.numeroPortas = numeroPortas;
+    }
+
+    public TuplaMac[] getTuplasMac() {
+        return tuplasMac;
+    }
+
+    public void setTuplasMac(TuplaMac[] tuplasMac) {
+        this.tuplasMac = tuplasMac;
+    }
+
+    public int getArpAdicionados() {
+        return arpAdicionados;
+    }
+
+    public void setArpAdicionados(int arpAdicionados) {
+        this.arpAdicionados = arpAdicionados;
+    }
+
+    
     public RoteadorModelo(String nome) {
         super(EnumTipoEquipamento.ROTEADOR, nome);
         this.ipPrivado = new Ip();
@@ -112,5 +181,19 @@ public class RoteadorModelo extends EquipamentoModelo implements IIp{
     public EnderecoMac getMacPorta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public Ip getIpPrivado() {
+        return ipPrivado;
+    }
+
+    public boolean isDhcp() {
+        return dhcp;
+    }
+
+    public int getNUMERO_TOTAL_PORTAS() {
+        return NUMERO_TOTAL_PORTAS;
+    }
+    
+    
 
 }

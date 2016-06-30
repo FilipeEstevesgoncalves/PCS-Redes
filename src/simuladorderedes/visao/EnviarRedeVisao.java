@@ -7,9 +7,10 @@ package simuladorderedes.visao;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import simuladorderedes.modelo.EquipamentosModelo;
-import static simuladorderedes.modelo.EquipamentosModelo.enviarMensagem;
+import simuladorderedes.modelo.RedeModelo;
+import static simuladorderedes.modelo.RedeModelo.enviarMensagem;
 import simuladorderedes.modelo.Ip;
+
 
 /**
  *
@@ -54,14 +55,14 @@ public class EnviarRedeVisao extends JFrame {
             }
         });
 
-        jComboBoxEquipamentosReceptor.setModel(new javax.swing.DefaultComboBoxModel<>(EquipamentosModelo.getNomes()));
+        jComboBoxEquipamentosReceptor.setModel(new javax.swing.DefaultComboBoxModel<>(RedeModelo.getNomes()));
         jComboBoxEquipamentosReceptor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxEquipamentosReceptorActionPerformed(evt);
             }
         });
 
-        jComboBoxEquipamentosEmissor.setModel(new javax.swing.DefaultComboBoxModel<>(EquipamentosModelo.getNomes()));
+        jComboBoxEquipamentosEmissor.setModel(new javax.swing.DefaultComboBoxModel<>(RedeModelo.getNomes()));
         jComboBoxEquipamentosEmissor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxEquipamentosEmissorActionPerformed(evt);

@@ -12,4 +12,6 @@ public interface IIp {
     public void Dhcp(RoteadorModelo roterador);
     public boolean getDhcp();
     public void setDhcp(boolean dhcp);
+    
+    
 }
